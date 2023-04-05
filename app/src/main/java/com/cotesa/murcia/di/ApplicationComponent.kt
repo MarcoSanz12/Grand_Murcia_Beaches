@@ -1,6 +1,7 @@
 package com.cotesa.murcia.di
 
 import com.cotesa.common.di.ApplicationCommonModule
+import com.cotesa.common.di.DaoModule
 import com.cotesa.murcia.BeachApplication
 import com.cotesa.murcia.feature.home.activity.HomeActivity
 import com.cotesa.murcia.feature.home.fragment.MenuFragment
@@ -13,7 +14,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ApplicationModule::class, ViewModelModule::class, ApplicationCommonModule::class])
+@Component(modules = [ApplicationModule::class, ViewModelModule::class, ApplicationCommonModule::class, DaoModule::class])
 interface ApplicationComponent {
     fun inject(application: BeachApplication)
     fun inject(splashActivity: SplashActivity)

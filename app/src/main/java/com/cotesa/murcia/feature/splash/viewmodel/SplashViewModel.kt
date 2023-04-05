@@ -15,27 +15,21 @@ import javax.inject.Inject
 class SplashViewModel
 @Inject constructor(
     val context: Context,
-    val getBeaches: GetBeaches,
-    val beachProvider: BeachProvider
+    val getBeaches: GetBeaches
 ) : BaseViewModel() {
 
 
     var loaded: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun callAllBeaches() {
-        CoroutineScope(Dispatchers.Default).launch{
+    suspend fun callAllBeaches() {
             getBeaches.run(GetBeaches.Params(context)).fold(
                 ::handleFailure,
                 ::handleLoaded
             )
-        }
-
     }
 
     private fun handleLoaded(beaches: List<Beach>) {
-        beachProvider.beachList = beaches
-        Log.e("beaches","Cargadas [${beaches.size}] playas")
-       loaded.postValue(true)
+        loaded.postValue(true)
     }
 
 

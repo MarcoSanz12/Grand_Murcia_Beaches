@@ -45,23 +45,15 @@ class ListFragment : BaseFragment() {
         appComponent.inject(this)
       /* (activity as BaseActivity).clearBackstack()*/
         homeViewModel = viewModel(viewModelFactory) {
-            observe(loaded,::handleLoaded)
-            observe(beachList,::handleBeachList)
+            observe(beachList,::handleLoaded)
         }
 
     }
-
-    private fun handleBeachList(beachList: List<Beach>?){
-        binding.tvListPrueba.text = beachList!!.size.toString()
+    private fun handleLoaded(beachList: List<Beach>?) {
+        binding.pbListLoading.visible()
+        binding.tvListPrueba.text = "Hay ${beachList!!.size} playas"
+        binding.pbListLoading.visible()
     }
-
-    private fun handleLoaded(b: Boolean?) {
-        when(b){
-            true,null -> binding.pbSplashLoading.invisible()
-            false -> binding.pbSplashLoading.visible()
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.e("ListFragment","Estoy iniciandome " + this::class.java.name)

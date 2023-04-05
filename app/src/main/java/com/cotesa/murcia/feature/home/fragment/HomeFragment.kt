@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.cotesa.appcore.extension.*
 import com.cotesa.appcore.platform.BaseFragment
+import com.cotesa.common.entity.beach.Beach
 import com.cotesa.murcia.BeachApplication
 import com.cotesa.murcia.databinding.FragmentHomeBinding
 import com.cotesa.murcia.di.ApplicationComponent
@@ -44,17 +45,17 @@ class HomeFragment : BaseFragment() {
         appComponent.inject(this)
         /* (activity as BaseActivity).clearBackstack()*/
         homeViewModel = viewModel(viewModelFactory) {
-            observe(loaded,::handleLoaded)
+
         }
 
     }
 
-    private fun handleLoaded(b: Boolean?) {
-        when(b){
-            true -> binding.pbMenuLoading.invisible()
-            false,null -> binding.pbMenuLoading.visible()
+
+
+/*    private fun handleLoaded(List<Beach>?) {
+
         }
-    }
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

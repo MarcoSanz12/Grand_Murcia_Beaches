@@ -1,4 +1,4 @@
-
+package com.cotesa.common.db.dao
 
 import androidx.room.*
 import com.cotesa.common.entity.beach.Beach

@@ -59,20 +59,16 @@ class SplashFragment : BaseFragment() {
 
     private fun initializeView() {
 
-        splashViewModel.callAllBeaches()
-        initHandler(2000)
-    }
-
-    private fun loadService() {
-        CoroutineScope(Dispatchers.Default).launch {
-//            splashViewModel.callAllService(getString(com.cotesa.common.R.string.language))
+        CoroutineScope(Dispatchers.Default).launch{
+            splashViewModel.callAllBeaches()
         }
+            initHandler(2000)
+
     }
 
     private fun renderLoaded(loaded: Boolean?) {
         services = true
         tryNavigateMenu()
-
     }
 
     private fun tryNavigateMenu() {

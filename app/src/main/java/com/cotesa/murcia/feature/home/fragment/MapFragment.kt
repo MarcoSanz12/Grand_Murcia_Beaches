@@ -44,7 +44,7 @@ class MapFragment : BaseFragment() {
         appComponent.inject(this)
         /* (activity as BaseActivity).clearBackstack()*/
         homeViewModel = viewModel(viewModelFactory) {
-            observe(loaded,::handleLoaded)
+
         }
 
     }

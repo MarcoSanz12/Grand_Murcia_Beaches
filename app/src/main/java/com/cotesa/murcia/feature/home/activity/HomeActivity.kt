@@ -20,6 +20,9 @@ import com.cotesa.murcia.feature.home.viewmodel.HomeViewModel
 import com.cotesa.murcia.navigator.Navigator
 import com.cotesa.murcia.R
 import com.cotesa.murcia.feature.home.fragment.MenuFragment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeActivity : BaseActivity() {
@@ -73,7 +76,9 @@ class HomeActivity : BaseActivity() {
         appComponent.inject(this)
         homeViewModel = viewModel(viewModelFactory) {
         }
-        homeViewModel.callBeaches()
+        CoroutineScope(Dispatchers.Default).launch {
+            homeViewModel.callBeaches(this@HomeActivity)
+        }
 
         binding.back.setOnClickListener {
             onBackPressed()
