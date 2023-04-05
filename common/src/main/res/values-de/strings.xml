@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="language">de</string>
+    <!--    Secciones-->
+    <string name="error_generic">Es ist ein Fehler aufgetreten, bitte versuchen Sie es später noch einmal.</string>
+    <!--    Secciones-->
+    <string name="gobierno_insular">Inselregierung</string>
+    <string name="patrimonio">Erbe</string>
+    <string name="actualidad">Nachrichten</string>
+    <string name="participacion">Beteiligung der Bürger</string>
+    <string name="medio_ambiente">Umwelt</string>
+    <string name="servicios">Dienstleistungen</string>
+    <string name="notificaciones">Benachrichtigungen</string>
+    <string name="tramites">Formalitäten</string>
+    <string name="agenda">Tagesordnung</string>
+    <string name="senalizacion">Intelligente touristische Beschilderung</string>
+    <string name="sincronizacion_automatica">Automatische Synchronisierung</string>
+    <string name="administracion_favorita">Bevorzugte Verwaltung</string>
+
+    <string name="config_de_notifica">Einstellungen für Benachrichtigungen</string>
+    <string name="preferencias">Präferenzen</string>
+    <string name="ayuda">Hilfe</string>
+    <string name="info_fuerteven">Informationen zur offenen Insel Fuerteventura</string>
+    <string name="comparte_app">Diese APP teilen</string>
+    <string name="comunicar_error">Fehler in der APP melden</string>
+    <string name="inicio_sesion">Einloggen</string>
+
+    <string name="busqueda_categoria">Suche nach Kategorie</string>
+    <string name="marcar_todos">Alle markieren</string>
+    <string name="sin_ubicacion">Wir haben nicht den Standort</string>
+    <string name="ubicacion">Standort</string>
+
+    <string name="fecha_inicio">Datum des Beginns</string>
+    <string name="fecha_fin">Datum des Endes</string>
+
+
+    <!--RA-->
+    <string name="connection_error_dialog">Es ist ein Fehler aufgetreten. \nPrüfen Sie, ob Sie eine Internetverbindung haben.</string>
+    <string name="connection_error_dialog_button1">Wiederholung</string>
+    <string name="connection_error_dialog_button2">Konfiguration öffnen</string>
+    <string name="connection_error_dialog_button3">Anwendung schließen</string>
+
+    <string name="distance_ar">Entfernung</string>
+    <string name="rango_busqueda">Suchbereich:</string>
+    <string name="no_hay_pois">Keine Ressourcen</string>
+
+    <string name="multimedia_galeria">Galerie</string>
+    <string name="multimedia_audioguia">Audioführer</string>
+    <string name="multimedia_videoguia">Videoführer</string>
+    <string name="multimedia_documento">Dokumente</string>
+    <string name="multimedia_externos">Externe Videos</string>
+    <string name="multimedia_enlaces">Externe Links</string>
+    <string name="pregunta_taro">ASK TARO</string>
+    <string name="taro">Taro</string>
+
+    <string name="mapa_menu">Karte</string>
+    <string name="mapa">Karte</string>
+    <string name="cuaderno_viaje">Reisebericht</string>
+    <string name="ajustes">Anpassungen</string>
+    <string name="listado">Auflistung</string>
+    <string name="experiencias_recomendadas">Empfohlene Erfahrungen</string>
+    <string name="ocio">Freizeit und freie Zeit</string>
+    <string name="rutas">Routen</string>
+    <string name="deportes">Sport</string>
+    <string name="comer">Essen und Trinken</string>
+    <string name="wellness">Wellness und Spa</string>
+    <string name="vista_mapa">Blick auf die Karte</string>
+    <string name="tienda_online">Eintrittskarten</string>
+    <string name="elementos_relacionados">Andere ähnliche</string>
+    <string name="cuaderno">Zum Reisebericht hinzufügen</string>
+    <string name="escribe_tu_pregunta">Schreiben Sie Ihre Frage</string>
+    <string name="enviar">Senden Sie</string>
+    <string name="favorito">Favoriten</string>
+    <string name="entradas">Eintrittskarten</string>
+    <string name="elige_email">E-Mail senden…</string>
+    <string name="tickets">Eintrittskarten</string>
+
+    <string name="cambiar_idioma">Sprache ändern</string>
+    <string name="idioma">Sprache</string>
+    <string name="ingles">Englisch</string>
+    <string name="espanol">Spanisch</string>
+
+    <string name="radio_accion">Aktionsradius</string>
+    <string name="radio">Radius</string>
+    <string name="radio_info">Wählen Sie den maximalen Umfang der Inhalte, die in den Sortieroptionen der Liste nach Georeferenz angezeigt werden sollen.</string>
+    <string name="radio_min">Min.</string>
+    <string name="radio_max">Max.</string>
+
+    <string name="cancelar">Abbrechen</string>
+    <string name="aceptar">Akzeptieren</string>
+    <string name="escribe_tu_nota_aqui">Schreiben Sie Ihre Notiz hier</string>
+    <string name="version">Version: %s</string>
+    <string name="aleman">Deutsch</string>
+    <string name="recordar">Erinnern Sie sich an</string>
+
+
+    <string name="favoritos">Favoriten</string>
+
+
+    <string name="setting">Anpassungen</string>
+    <string name="login">Anmeldung</string>
+    <string name="desconectarse">Abmelden</string>
+    <string name="login_correcto">Korrekte Anmeldung</string>
+    <string name="informacion">Informationen</string>
+    <string name="encuestas">Erhebungen</string>
+    <string name="activar_notificaciones">Benachrichtigungen aktivieren</string>
+    <string name="permitir_ubicacion">Standort zulassen</string>
+    <string name="debe_activar_ubicacion">Sie müssen den Standort auf Ihrem Gerät aktivieren</string>
+    <string name="usuario">Benutzer</string>
+    <string name="siempre_conectado">Immer verbunden</string>
+    <string name="entrar">Eingabe</string>
+    <string name="remmember_pass">Haben Sie Ihr Passwort vergessen? \nKlicken Sie hier</string>
+    <string name="contrasenna">Passwort</string>
+    <string name="email">E-Mail</string>
+    <string name="repita_email">E-Mail wiederholen</string>
+    <string name="repita_pass">Passwort wiederholen</string>
+    <string name="contrasenna_info">Das Passwort muss zwischen 10 und 20 alphanumerische Zeichen enthalten, mindestens einen Großbuchstaben und das Symbol</string>
+    <string name="registrarme">Register</string>
+    <string name="registro">Register</string>
+    <string name="registro_ok">Ihre Registrierung war erfolgreich</string>
+    <string name="registro_error">Fehler bei der Registrierung</string>
+    <string name="continuar">Weiter</string>
+    <string name="registrate">Register</string>
+    <string name="registrese">Register</string>
+    <string name="no_tienes_cuenta">Sie haben noch kein Konto?</string>
+    <string name="rellene_los_campos_para_crear_su_cuenta">Füllen Sie die Felder aus, um Ihr Konto zu erstellen</string>
+    <string name="remember_pass_subtitle">Haben Sie Ihr Passwort vergessen?\nGeben Sie Ihre E-Mail Adresse ein</string>
+    <string name="restablecer_pass">Passwort zurücksetzen</string>
+    <string name="mail_enviado">Es wurde eine E-Mail zur Änderung des Passworts gesendet</string>
+    <string name="tu_opini_n_nos_interesa">Wir sind an Ihrer Meinung interessiert</string>
+    <string name="actualmente_no_disponemos_de_encuestas_para_mostrarte">Wir haben derzeit keine Umfragen, die wir Ihnen zeigen können</string>
+    <string name="sinInternet">Momentan keine Internetverbindung.</string>
+    <string name="atencion">Achtung</string>
+    <string name="email_no_valido">Keine gültige E-Mail</string>
+    <string name="password_iguales">Die Passwörter müssen gleich sein</string>
+    <string name="guia_password">Das Passwort muss zwischen 6 und 20 Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, eine Zahl und ein Symbol enthalten.</string>
+    <string name="nombre">Name</string>
+    <string name="no_se_han_encontrado">Nicht gefunden\nZufälle</string>
+    <string name="aviso_legal">Rechtlicher Hinweis</string>
+    <string name="politica_privacidad">Datenschutzbestimmungen</string>
+    <string name="texto_obligatorio">Ich habe die rechtlichen Hinweise gelesen und akzeptiere die Datenschutzbestimmungen</string>
+    <string name="lorem_ipsum_extre">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum laborum laborum.\n</string>
+    <string name="acceder">Zugang</string>
+    <string name="login_con_cuenta">Melden Sie sich mit Ihrem Konto an</string>
+    <string name="cerrar_sesion_dialog">Möchten Sie sich abmelden?</string>
+    <string name="desc_incidencia">Beschreiben Sie die Häufigkeit</string>
+
+    <string name="bm_home">Startseite</string>
+    <string name="bm_favoritos">Favoriten</string>
+    <string name="bm_buscar">Suche</string>
+    <string name="buscar">Suche</string>
+    <string name="bm_mapa">Karte</string>
+    <string name="bm_cuaderno">Notizbuch</string>
+    <string name="bm_setting">Anpassungen</string>
+    <string name="canal_turistico_digital">Digitaler Tourismuskanal</string>
+    <string name="punto">Punkt von Interesse</string>
+    <string name="go_to_rrss">Melden Sie sich mit Ihren sozialen Netzwerken an</string>
+    <string name="valorar">Valorar</string>
+    <string name="danos_opinion">Geben Sie uns Ihre Meinung</string>
+    <string name="comments">Kommentare</string>
+    <string name="escribe_comment">Schreiben Sie Ihren Kommentar</string>
+    <string name="logout">Abmelden</string>
+    <string name="error_register">Bei der Registrierung ist ein Fehler aufgetreten</string>
+    <string name="error_register_name">Dieser Benutzer existiert bereits</string>
+    <string name="error_register_email">Diese E-Mail existiert bereits</string>
+    <string name="texto_oblligatorio">Ich habe die rechtlichen Hinweise gelesen und akzeptiere die Datenschutzbestimmungen</string>
+    <string name="no_coincide">Passt nicht</string>
+    <string name="password_min_length">Mindestens 6 Zeichen</string>
+    <string name="check_oblligatorio">Debe leer el Aviso legal y aceptar la Política de privacidad</string>
+    <string name="user_registered">Usuario registrado correctamente\nSe ha enviado un email con la contraseña</string>
+    <string name="user_registered_withPass">Usuario registrado correctamente</string>
+    <string name="need_headphone">Para poder reproducir el contenido dentro de la zona de silencio necesita auriculares.</string>
+
+    <string name="requerido">Erforderlich</string>
+
+    <string name="hoy">Heute</string>
+    <string name="mañana">Morgen</string>
+    <string name="week_end">Wochenende</string>
+    <string name="esta_semana">Diese Woche</string>
+    <string name="tienda">Shop</string>
+    <string name="galeria">Bildergalerie</string>
+    <string name="audios">Audios</string>
+    <string name="videos">Videos</string>
+    <string name="documentos">Dokumente</string>
+    <string name="rellena_fechas">Geben Sie das Anfangs- und Enddatum ein</string>
+
+
+
+    <string name="eventos">VERANSTALTUNGEN</string>
+    <string name="experiencias">ERFAHRUNGEN</string>
+    <string name="experiencias_not_cap">Erlebnisse</string>
+    <string name="relacionados">Verwandte Elemente</string>
+    <string name="multimedia">Multimedia</string>
+    <string name="compartir">Teilen Sie</string>
+
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam varius vehicula eros quis ullamcorper. Sed ornare bibendum vestibulum. Praesent a nulla at est imperdiet finibus. Suspendisse vitae nisl iaculis, sollicitudin sem vel, viverra purus. Nulla at lorem eget erat molestie eleifend. Morbi eu dapibus ex, auctor pulvinar tortor. Praesent dignissim facilisis mauris, quis bibendum ligula convallis non. Aenean vitae tristique magna. Vestibulum pharetra fringilla erat non auctor. In nisi augue, lacinia sed nisl ac, consequat pellentesque tortor. Suspendisse tincidunt tempus feugiat. Nunc ornare auctor nibh, et ultricies eros. Vestibulum aliquet, lectus vitae sagittis congue, purus odio egestas lacus, sed efficitur leo metus quis magna. In sit amet massa sed leo semper finibus nec egestas felis. Pellentesque nec congue est.</string>
+
+    <string name="inicio">Startseite</string>
+
+
+
+    <string name="cerrar">CLOSE</string>
+
+    <string name="nfc">NFC-Baken-Lesung</string>
+    <string name="not_nfc">Das Telefon verfügt nicht über ein NFC-System</string>
+    <string name="active_nfc">Muss das NFC-System aktivieren</string>
+
+    <string name="qr">QR-Baken lesen</string>
+    <string name="busque_codigo">Suche nach dem QR-Code</string>
+    <string name="lee_codigo">Code lesen</string>
+
+
+    <string name="beacons">Baken entdeckt</string>
+    <string name="listado_ordenado">Liste nach Datum geordnet</string>
+    <string name="code_qr_in_rectangle">Platzieren Sie einen QR-Code innerhalb des Sucherrahmens</string>
+    <string name="redirect_to">"Sie werden weitergeleitet zu: "</string>
+    <string name="need_internet_signup">Für die Registrierung ist eine Internetverbindung erforderlich</string>
+    <string name="need_internet_chat">Um den Chatbot zu konsultieren, ist eine Internetverbindung erforderlich.</string>
+    <string name="need_location">Sie müssen die Lokalisierung im Bereich Einstellungen aktivieren</string>
+    <string name="need_login">Sie müssen eingeloggt sein, um Daten zu übermitteln</string>
+    <string name="error_send_data">Beim Senden der Daten ist ein Fehler aufgetreten.</string>
+    <string name="ok_send_data">Die Daten wurden korrekt gesendet</string>
+    <string name="info_ubicacion">Informationen über den Zweck der Nutzung des Standorts</string>
+    <string name="opciones_sincronización">Optionen für die Synchronisierung</string>
+    <string name="sinc_auto">Automatische Synchronisation beim Öffnen der APP</string>
+    <string name="sincronizar">Jetzt synchronisieren</string>
+    <string name="wifi_radio">Sie befinden sich innerhalb der WIFI %s-Zone Möchten Sie auf die Einstellungen zugreifen, um Ihr Gerät zu verbinden?</string>
+
+    <string name="general">Allgemein</string>
+    <string name="como_llegar">Wie man dorthin kommt</string>
+
+    <!--ACTUALIDAD-->
+    <string name="noticias">Nachrichten</string>
+    <string name="noticias_gobierno">E-Government-Nachrichten</string>
+    <string name="canales">RSS-Kanäle</string>
+    <string name="avisos">Notizen</string>
+    <string name="alertas">Warnungen</string>
+
+    <!-- PARTICIPA -->
+    <string name="listado_incidencias">Liste der eingesandten Vorfälle, Vorschläge und Beschwerden</string>
+    <string name="listado_incidencias_title">Liste der Vorfälle</string>
+    <string name="procesos_participativos">Partizipative Prozesse</string>
+    <string name="comunicacion_incidencias">Mitteilung von Vorfällen, Vorschlägen und Beschwerden</string>
+    <string name="add_imagen">Bild hinzufügen</string>
+    <string name="add_imagen2">Zum Hinzufügen eines Bildes anklicken</string>
+    <string name="direccion">Adresse</string>
+    <string name="descripcion">Beschreibung</string>
+    <string name="direccion_2">Adresse eingeben</string>
+    <string name="email2">Geben Sie Ihre E-Mail Adresse ein</string>
+    <string name="localizacion">Standort</string>
+    <string name="add_favoritos">Zu Favoriten hinzufügen</string>
+    <string name="add_calendar">Zum Kalender \n hinzufügen</string>
+    <string name="localizar">Suchen Sie</string>
+    <string name="administracion">Verwaltung</string>
+    <string name="categoria">Kategorie</string>
+    <string name="tipo">Typ</string>
+    <string name="titulo">Titel</string>
+    <string name="codigo">Code</string>
+    <string name="estado_incidencia">Staat</string>
+    <string name="imagen">Bild</string>
+    <string name="ver_mapa">Auf der Karte anzeigen</string>
+    <string name="seleccionar_ubicacion">Sie müssen einen Ort auf der Karte auswählen</string>
+    <string name="incidencia_ok">Ihre Anfrage wurde erfolgreich gesendet mit der ID: %s</string>
+    <string name="incidencia">Befürwortung</string>
+    <string name="sugerencia">Anregung</string>
+    <string name="incidencias_ubicacion">Wählen Sie einen Ort auf der Karte</string>
+
+    <string name="tipo_notif">Wählen Sie die Art der Benachrichtigungen, die Sie erhalten möchten</string>
+    <string name="activar_notif">Aktivieren/Deaktivieren aller Benachrichtigungen</string>
+    <string name="desactivar_marcador">Deaktivieren Sie dieses Lesezeichen, wenn Sie keine Benachrichtigungen erhalten möchten. Aktivieren Sie das Lesezeichen, um alle Arten von Benachrichtigungen zu erhalten. Sie können dann aus der nachstehenden Liste nur diejenigen auswählen, für die Sie sich interessieren:</string>
+    <string name="ofertas_empleo">Öffentliche Beschäftigungsangebote</string>
+    <string name="eventos_fav">Bevorzugte Ereignisse</string>
+
+    <string name="selecc_admin_fav">Wählen Sie die Inselverwaltungen aus, für die Sie Informationen in der mobilen Anwendung veröffentlichen möchten.
+</string>
+
+    <array name="entries_cat">
+        <item />
+        <item>Kategorie 1</item>
+        <item>Kategorie 2</item>
+        <item>Kategorie 3</item>
+    </array>
+
+    <array name="entries_administraciones">
+        <item />
+        <item>Inselrat von Fuerteventura</item>
+        <item>Stadtverwaltung von Antigua</item>
+        <item>Rathaus von Betancuria</item>
+        <item>Stadtrat von La Oliva</item>
+        <item>Rathaus von Pájara</item>
+        <item>Rathaus von Puerto del Rosario</item>
+        <item>Rathaus von Tuineje</item>
+    </array>
+
+    <!-- MEDIO AMBIENTE -->
+    <string name="residuos_solidos">Feste Abfälle</string>
+    <string name="alumbrado_publico">Straßenbeleuchtung</string>
+    <string name="indicador1">Indikator 1</string>
+    <string name="indicador2">Indikator 2</string>
+    <string name="indicador3">Indikator 3</string>
+    <string name="indicador4">Indikator 4</string>
+
+    <!-- ADMINISTRACIONES -->
+    <string name="cabildo">Inselrat von Fuerteventura</string>
+    <string name="ayto_antigua">Stadtverwaltung von Antigua</string>
+    <string name="ayto_betancuria">Rathaus von Betancuria</string>
+    <string name="ayto_oliva">Stadtrat von La Oliva</string>
+    <string name="ayto_pajara">Rathaus von Pájara</string>
+    <string name="ayto_puerto_rosario">Rathaus von Puerto del Rosario</string>
+    <string name="ayto_tuineje">Rathaus von Tuineje</string>
+
+    <!-- SERVICIOS -->
+    <string name="hospitales">Krankenhäuser und Gesundheitszentren</string>
+    <string name="farmacias">Apotheken</string>
+    <string name="centros_tic">Technologie- und Innovationszentren</string>
+    <string name="organismos_publicos">Öffentliche Einrichtungen</string>
+    <string name="transporte">Transport</string>
+    <string name="lineas_guaguas">Buslinien</string>
+    <string name="bono">Kauf eines Gutscheins</string>
+    <string name="tarifas">Tarife</string>
+    <string name="horarios">Fahrpläne</string>
+    <string name="paradas">Hält</string>
+    <string name="loc_guaguas">Standort Guaguas</string>
+    <string name="sentido_ida">Richtung in eine Richtung</string>
+    <string name="sentido_vuelta">Adresse zurück</string>
+
+    <!-- NOTIFICACIONES -->
+    <string name="mas_info">Weitere Informationen</string>
+    <string name="detalle_relacionados">Verwandte Seiten</string>
+
+
+    <string name="no_hay_relacionados">Sie hat keine verwandten Elemente</string>
+    <string name="fecha">Datum</string>
+    <string name="de_a_fecha_n">Von %s\na %s</string>
+    <string name="de_a_fecha">Von %s a %s</string>
+    <string name="streaming">Streaming</string>
+    <string name="fuerteventura_open_island" translatable="false">Fuerteventura Intelligente Insel</string>
+    <string name="msg_info_marker_selected">Klicken Sie auf die Karte, um den Standort des Punktes und den Namen der Straße zu sehen, falls Sie einen haben.</string>
+    <string name="imagen_download">Die Bilder sind heruntergeladen worden</string>
+    <string name="want_download">Möchten Sie die Bilder in dieser Galerie herunterladen?</string>
+    <string name="msg_change_idioma">Um die Sprache der Anwendung zu ändern, müssen Sie sie neu starten. Möchten Sie die Anwendung neu starten?</string>
+
+    <string name="texto_compartir">Ich habe es in der Fuerteventura Smart Island APP gesehen. Herunterladen unter \t</string>
+    <string name="va_a_ser_dirigido">Sie werden zur Anmeldung auf die Website von Fuerteventura Open Island weitergeleitet.</string>
+    <string name="carnaval">Karneval</string>
+    <string name="cine">Kino</string>
+    <string name="conf_cong">Konferenzen und Kongresse</string>
+    <string name="danza">Tanz</string>
+    <string name="espectaculos">Zeigt</string>
+    <string name="exposiciones">Ausstellungen</string>
+    <string name="ferias">Messen und Märkte</string>
+    <string name="fiestas">Feste und Traditionen</string>
+    <string name="infantil">Für Kinder</string>
+    <string name="institucional">Institutionelle</string>
+    <string name="pleno">Plenarsitzung</string>
+    <string name="musica">Musik</string>
+    <string name="naturaleza">Natur</string>
+    <string name="navidad">Weihnachten</string>
+    <string name="teatro">Theater</string>
+    <string name="otros">Andere</string>
+    <string name="estado_enviado">Gesendet an</string>
+    <string name="telefono">Teléfono</string>
+    <string name="web">Página web</string>
+    <string name="instagram">Instagram</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="youtube">Youtube</string>
+    <string name="anterior_aviso">Aviso anterior</string>
+    <string name="siguiente_aviso">Aviso siguiente</string>
+    <string name="descargar">Descargar contenido</string>
+    <string name="hacer_favorito">Hacer favorito</string>
+    <string name="anadir_comentario">Añadir comentario</string>
+    <string name="cerrar_info">Cerrar pantalla de información</string>
+    <string name="show_info">Mostrar pantalla de información</string>
+    <string name="mostrar_buscador">Mostrar el buscador</string>
+    <string name="image_main">Imagen principal</string>
+    <string name="imagenes">Imágenes</string>
+    <string name="videos_externos">Videos externos</string>
+    <string name="introduccion">Introducción</string>
+    <string name="politica_pivacidad">"Política de privacidad "</string>
+    <string name="funcionalidades_generales">Funcionalidades generales</string>
+    <string name="save_data">Se ha guardado la incidencia en el teléfono, la proxima vez que disponga de internet, se enviará</string>
+    <string name="medir_text_msg">Sitúe dos puntos en el mapa y pulse el boton "Medir" para conocer la distancia entre ellos</string>
+    <string name="medir">Medir</string>
+    <string name="im_genes">Imágenes</string>
+    <string name="audios_txt">Audios</string>
+    <string name="v_deos">Vídeos</string>
+    <string name="documentos_txt">Documentos</string>
+    <string name="enlaces">Enlaces</string>
+</resources>

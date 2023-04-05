@@ -1,0 +1,4 @@
+rootProject.name = "Grand Murcia Beaches"
+include ':app'
+include ':appCore'
+include ':common'

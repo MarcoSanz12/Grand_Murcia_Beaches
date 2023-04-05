@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "632682249997",
+    "project_id": "gestiontransporte-1ed72",
+    "storage_bucket": "gestiontransporte-1ed72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632682249997:android:529b7e613fe0c533cfba44",
+        "android_client_info": {
+          "package_name": "com.cotesa.esqueleto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632682249997-a9j7nrf4p8sdilcufpbpavqnngpm2nrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp2lgCcE8zN6rX3D8DEdVjl7iC_dKF4Ug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632682249997-a9j7nrf4p8sdilcufpbpavqnngpm2nrf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "632682249997-ehbbjsu0f7spaev0rocslb36ap711ci8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cotesa.gestiontransporte"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632682249997:android:8a9dfbc2f9c81e77cfba44",
+        "android_client_info": {
+          "package_name": "com.cotesa.gestiontransporte.des"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632682249997-a9j7nrf4p8sdilcufpbpavqnngpm2nrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp2lgCcE8zN6rX3D8DEdVjl7iC_dKF4Ug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632682249997-a9j7nrf4p8sdilcufpbpavqnngpm2nrf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "632682249997-ehbbjsu0f7spaev0rocslb36ap711ci8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cotesa.gestiontransporte"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632682249997:android:8a9dfbc2f9c81e77cfba44",
+        "android_client_info": {
+          "package_name": "com.cotesa.gestiontransporte.pre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632682249997-a9j7nrf4p8sdilcufpbpavqnngpm2nrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp2lgCcE8zN6rX3D8DEdVjl7iC_dKF4Ug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632682249997-a9j7nrf4p8sdilcufpbpavqnngpm2nrf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "632682249997-ehbbjsu0f7spaev0rocslb36ap711ci8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cotesa.gestiontransporte"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

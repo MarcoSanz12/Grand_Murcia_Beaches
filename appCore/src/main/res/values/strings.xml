@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bm_home">Inicio</string>
+    <string name="bm_buscar">Buscar</string>
+    <string name="bm_mapa">Mapa</string>
+    <string name="bm_cuaderno">Cuaderno</string>
+    <string name="bm_setting">Ajustes</string>
+    <string name="bm_favoritos">Favoritos</string>
+
+</resources>
