@@ -5,26 +5,28 @@ import com.cotesa.appcore.functional.Either
 import com.cotesa.appcore.platform.BaseRepository
 import com.cotesa.appcore.platform.NetworkHandler
 import com.cotesa.common.BuildConfig
+import com.cotesa.common.db.BeachDatabase
 import com.cotesa.common.entity.aemet.AemetBase
 import com.cotesa.common.entity.aemet.AemetInfo
 import com.cotesa.common.entity.beach.Beach
 import com.cotesa.common.services.BeachService
 import javax.inject.Inject
-import javax.inject.Singleton
 
 interface BeachRepository : BaseRepository {
 
     suspend fun callAllBeaches():Either<Failure,List<Beach>>
+    fun callAllBeachesDB():Either<Failure,List<Beach>>
     suspend fun callAemetInfo(id:Int):Either<Failure,List<AemetInfo>>
 
-    suspend fun callBeach(id:Int):Either<Failure,Beach>
+    fun callBeachByIdBD(id:Int):Either<Failure,Beach>
 
-    suspend fun saveBeaches(beachList:List<Beach>)
+    fun saveBeachesBD(beachList:List<Beach>)
 
     class Network
     @Inject constructor(
         private val networkHandler: NetworkHandler,
-        private val beachService: BeachService
+        private val beachService: BeachService,
+        private val beachDatabase: BeachDatabase
     ) : BeachRepository{
 
         /**
@@ -40,8 +42,8 @@ interface BeachRepository : BaseRepository {
            return when(networkHandler.isConnected){
                true ->
                     request(beachService.getAllBeaches()){
+                        saveBeachesBD(it)
                         it
-                        // TODO: Implement saving in DB
                     }
                false, null ->
                    Either.Left(Failure.DBEmptyError)
@@ -69,20 +71,45 @@ interface BeachRepository : BaseRepository {
                     }
                 ) as Either<Failure, List<AemetInfo>>
 
-            }
-            else {
+            } else
                 Either.Left(Failure.NetworkConnection)
+
+
+        }
+
+        override fun callAllBeachesDB() : Either<Failure,List<Beach>>{
+
+            return try{
+                val result = beachDatabase.beachDao().selectBeaches()
+                if (result.isNullOrEmpty())
+                    Either.Left(Failure.DBEmptyError)
+                else
+                    Either.Right(result)
+
+            }catch(e : Exception){
+                Either.Left(Failure.DBEmptyError)
             }
 
         }
+        override fun callBeachByIdBD(id: Int): Either<Failure, Beach> {
+            return try{
+                val result = beachDatabase.beachDao().selectBeachById(id)
+                if (result == null)
+                    Either.Left(Failure.DBEmptyError)
+                else
+                    Either.Right(result)
 
-
-        override suspend fun callBeach(id: Int): Either<Failure, Beach> {
-            TODO("Not yet implemented, waiting for ROOM")
+            }catch(e : Exception){
+                Either.Left(Failure.DBEmptyError)
+            }
         }
 
-        override suspend fun saveBeaches(beachList: List<Beach>) {
-            TODO("Not yet implemented, waiting for ROOM")
+        override fun saveBeachesBD(beachList: List<Beach>) {
+            val dao = beachDatabase.beachDao()
+
+            for (beach in beachList)
+               dao.insertBeach(beach)
+
         }
     }
 

@@ -1,49 +1,148 @@
 package com.cotesa.common.db.converter
 
 import androidx.room.TypeConverter
+import com.cotesa.common.entity.beach.Category
+import com.cotesa.common.entity.beach.File
+import com.cotesa.common.entity.beach.Image
+import com.cotesa.common.entity.beach.Ubication
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
 class Converters {
     @TypeConverter
-    fun fromStringToInt(value: String?): Int? {
-        return if (value != null) {
-            val listType: Type = object : TypeToken<Int?>() {}.type
-            return Gson().fromJson(value, listType)
-        } else null
+    fun fromCategoryListToString(categoryList:List<Category>?):String?{
+        var string : String = ""
+        if (categoryList != null){
+            var gson = Gson()
+            var type : Type = object : TypeToken<List<Category>>(){}.type
+
+            string = gson.toJson(categoryList,type)
+        }
+
+        return string
     }
 
     @TypeConverter
-    fun fromIntToString(list: Int?): String? {
-        return Gson().toJson(list)
+    fun fromStringToCategoryList (string : String?) : List<Category>?{
+        var categoryList : List<Category>? = emptyList()
+
+        if (!string.isNullOrEmpty()){
+            var gson = Gson()
+            var type : Type = object : TypeToken<List<Category>>(){}.type
+
+            categoryList = gson.fromJson(string,type)
+        }
+
+        return categoryList!!
     }
 
     @TypeConverter
-    fun fromString(value: String?): List<String>? {
-        return if (value != null) {
-            val listType: Type = object : TypeToken<List<String?>?>() {}.type
-            return Gson().fromJson(value, listType)
-        } else null
+    fun fromFileListToString(fileList:List<File>?):String?{
+        var string : String = ""
+        if (fileList != null){
+            var gson = Gson()
+            var type : Type = object : TypeToken<List<File>>(){}.type
+
+            string = gson.toJson(fileList,type)
+        }
+
+        return string
     }
 
     @TypeConverter
-    fun fromArrayList(list: List<String?>?): String? {
-        return Gson().toJson(list)
+    fun fromStringToFileList (string : String?) : List<File>?{
+        var fileList : List<File>? = emptyList()
+
+        if (!string.isNullOrEmpty()){
+            var gson = Gson()
+            var type : Type = object : TypeToken<List<File>>(){}.type
+
+            fileList = gson.fromJson(string,type)
+        }
+
+        return fileList!!
     }
 
     @TypeConverter
-    fun fromStringtoInt(value: String?): List<Int>? {
-        return if (value != null) {
-            val listType: Type = object : TypeToken<List<Int?>?>() {}.type
-            Gson().fromJson(value, listType)
-        } else
-            null
+    fun fromImageListToString(imageList:List<Image>?):String?{
+        var string : String = ""
+        if (imageList != null){
+            var gson = Gson()
+            var type : Type = object : TypeToken<List<Image>>(){}.type
+
+            string = gson.toJson(imageList,type)
+        }
+
+        return string
     }
 
     @TypeConverter
-    fun fromIntstoString(list: List<Int?>?): String {
-        return Gson().toJson(list)
+    fun fromStringToImageList (string : String?) : List<Image>?{
+        var ImageList : List<Image>? = emptyList()
+
+        if (!string.isNullOrEmpty()){
+            var gson = Gson()
+            var type : Type = object : TypeToken<List<Image>>(){}.type
+
+            ImageList = gson.fromJson(string,type)
+        }
+
+        return ImageList!!
+    }
+
+    @TypeConverter
+    fun fromIntListToString(intList:List<Int>?):String?{
+        var string : String = ""
+        if (intList != null){
+            var gson = Gson()
+            var type : Type = object : TypeToken<List<Int>>(){}.type
+
+            string = gson.toJson(intList,type)
+        }
+
+        return string
+    }
+
+    @TypeConverter
+    fun fromStringToIntList (string : String?) : List<Int>?{
+        var intList : List<Int>? = emptyList()
+
+        if (!string.isNullOrEmpty()){
+            var gson = Gson()
+            var type : Type = object : TypeToken<List<Int>>(){}.type
+
+            intList = gson.fromJson(string,type)
+        }
+
+        return intList!!
+    }
+
+    @TypeConverter
+    fun fromUbicationToString(ubication:Ubication?):String?{
+        var string : String = ""
+        if (ubication != null){
+            var gson = Gson()
+            var type : Type = object : TypeToken<Ubication>(){}.type
+
+            string = gson.toJson(ubication,type)
+        }
+
+        return string
+    }
+
+    @TypeConverter
+    fun fromStringToUbication (string : String?) : Ubication?{
+        var ubication = Ubication()
+
+        if (!string.isNullOrEmpty()){
+            var gson = Gson()
+            var type : Type = object : TypeToken<Ubication>(){}.type
+
+            ubication = gson.fromJson(string,type)
+        }
+
+        return ubication
     }
 
 }
