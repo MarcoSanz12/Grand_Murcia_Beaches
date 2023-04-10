@@ -11,9 +11,12 @@ import android.view.ViewGroup
 import com.cotesa.appcore.extension.*
 import com.cotesa.appcore.platform.BaseFragment
 import com.cotesa.common.entity.beach.Beach
+import com.cotesa.common.util.HomeActionBar
 import com.cotesa.murcia.BeachApplication
+import com.cotesa.murcia.R
 import com.cotesa.murcia.databinding.FragmentHomeBinding
 import com.cotesa.murcia.di.ApplicationComponent
+import com.cotesa.murcia.feature.home.activity.HomeActivity
 import com.cotesa.murcia.feature.home.viewmodel.HomeViewModel
 import com.cotesa.murcia.navigator.Navigator
 import javax.inject.Inject
@@ -63,7 +66,9 @@ class HomeFragment : BaseFragment() {
 
 
     private fun initializeView() {
-
+        with (activity as HomeActivity){
+            configureActionBar(HomeActionBar(getString(com.cotesa.common.R.string.btitle_main_menu)))
+        }
     }
 
     fun goToUrl(url: String) {

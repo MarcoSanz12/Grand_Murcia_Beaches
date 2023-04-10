@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">Grand Murcia Beaches</string>
-    <string name="loading_please_wait" translatable="false">Loading, please wait</string>
-    <string name="grand_n_murcia_n_beaches" translatable="false">GRAND\n  MURCIA\n BEACHES</string>
-    <string name="main_menu" translatable="false">Main Menu</string>
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
 
 </resources>

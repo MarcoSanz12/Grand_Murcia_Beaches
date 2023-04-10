@@ -111,6 +111,7 @@ interface BeachRepository : BaseRepository {
                dao.insertBeach(beach)
 
         }
+
     }
 
 

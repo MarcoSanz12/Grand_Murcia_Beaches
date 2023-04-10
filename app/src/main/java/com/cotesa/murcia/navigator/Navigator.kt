@@ -6,8 +6,9 @@ import com.cotesa.appcore.extension.start
 import com.cotesa.appcore.navigator.BaseNavigator
 import com.cotesa.appcore.platform.BaseActivity
 import com.cotesa.murcia.feature.home.activity.HomeActivity
-import com.cotesa.murcia.feature.home.fragment.MenuFragment
+import com.cotesa.murcia.feature.home.fragment.HomeFragment
 import com.cotesa.murcia.feature.home.fragment.ListFragment
+import com.cotesa.murcia.feature.home.fragment.MapFragment
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,15 +20,16 @@ class Navigator
         if(activity !is HomeActivity){
             activity.start(HomeActivity.callingIntent(activity,0).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         }else
-            activity.changeFragment(MenuFragment())
+            activity.changeFragment(HomeFragment())
     }
 
     fun initList(activity: BaseActivity){
-        if (activity is HomeActivity){
-            Log.e("Navigator","Cambio fragment")
-            activity.changeFragment(ListFragment())
+        activity.changeFragment(ListFragment())
 
-        }
+    }
+
+    fun initMap(activity: BaseActivity){
+        activity.changeFragment(MapFragment())
     }
     fun initHome(activity: BaseActivity){
        showHome(activity)

@@ -4,7 +4,6 @@ import com.cotesa.common.di.ApplicationCommonModule
 import com.cotesa.common.di.DaoModule
 import com.cotesa.murcia.BeachApplication
 import com.cotesa.murcia.feature.home.activity.HomeActivity
-import com.cotesa.murcia.feature.home.fragment.MenuFragment
 import com.cotesa.murcia.feature.home.fragment.ListFragment
 import com.cotesa.murcia.feature.home.fragment.MapFragment
 import com.cotesa.murcia.feature.home.fragment.HomeFragment
@@ -21,7 +20,6 @@ interface ApplicationComponent {
     fun inject(splashFragment: SplashFragment)
 
     fun inject(homeActivity: HomeActivity)
-    fun inject(menuFragment: MenuFragment)
 
     fun inject(listFragment: ListFragment)
     fun inject(mapFragment: MapFragment)

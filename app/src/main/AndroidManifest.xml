@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:name="com.cotesa.murcia.BeachApplication"
         android:theme="@style/Theme.GestionTransporte"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name="com.cotesa.murcia.feature.splash.activity.SplashActivity"

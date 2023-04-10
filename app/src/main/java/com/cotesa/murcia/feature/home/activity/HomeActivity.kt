@@ -7,11 +7,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.size
 import androidx.lifecycle.ViewModelProvider
 import com.cotesa.appcore.extension.inTransaction
+import com.cotesa.appcore.extension.invisible
 import com.cotesa.appcore.extension.viewModel
+import com.cotesa.appcore.extension.visible
 import com.cotesa.appcore.platform.BaseActivity
 import com.cotesa.appcore.platform.BaseFragment
+import com.cotesa.appcore.platform.ConfigureActionBar
+import com.cotesa.common.entity.common.BeachActionBar
 import com.cotesa.common.util.OrderState
 import com.cotesa.murcia.BeachApplication
 import com.cotesa.murcia.databinding.ActivityHomeBinding
@@ -19,7 +24,7 @@ import com.cotesa.murcia.di.ApplicationComponent
 import com.cotesa.murcia.feature.home.viewmodel.HomeViewModel
 import com.cotesa.murcia.navigator.Navigator
 import com.cotesa.murcia.R
-import com.cotesa.murcia.feature.home.fragment.MenuFragment
+import com.cotesa.murcia.feature.home.fragment.HomeFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -42,7 +47,7 @@ class HomeActivity : BaseActivity() {
         }
     }
 
-    override fun fragment() = MenuFragment()
+    override fun fragment() = HomeFragment()
 
     override fun toggleSpecialView() {
         //
@@ -83,6 +88,41 @@ class HomeActivity : BaseActivity() {
         binding.back.setOnClickListener {
             onBackPressed()
         }
+
+        binding.bnvNav.apply {
+            selectedItemId = com.cotesa.common.R.id.mi_home
+            setOnItemSelectedListener {
+                    when(it.itemId){
+
+                        //List
+                        com.cotesa.common.R.id.mi_list ->
+                        {
+                            navigator.initList(this@HomeActivity)
+                            Log.e("Stack","${binding.fragmentContainer.size}")
+                            true
+                        }
+
+                        //Map
+                        com.cotesa.common.R.id.mi_map ->
+                        {
+                            navigator.initMap(this@HomeActivity)
+                            Log.e("Stack","${binding.fragmentContainer.size}")
+                            true
+                        }
+
+                        //Home
+                        else->
+                        {
+                            navigator.initHome(this@HomeActivity)
+                            Log.e("Stack","${binding.fragmentContainer.size}")
+                            true
+
+                        }
+
+                    }
+
+                }
+        }
     }
 
     override fun initViews() {
@@ -102,6 +142,36 @@ class HomeActivity : BaseActivity() {
             R.id.fragment_container,
             fragment
         ).addToBackStack(null)
+    }
+
+    /**
+     * Configures the activity ActionBar, setting the visibilities and functionalities of it
+     *
+     * @param configureActionBar The [ConfigureActionBar] for setting parameters
+     */
+    override fun configureActionBar(configureActionBar: ConfigureActionBar) {
+        val actionBar : BeachActionBar = configureActionBar as BeachActionBar
+
+        // Title
+        binding.titleBar.text = actionBar.title
+
+        // Back button
+        if (actionBar.haveBack)
+            binding.back.visible()
+        else
+            binding.back.invisible()
+
+        // Search button
+        if (actionBar.haveSearch) {
+            binding.ivSearch.visible()
+            //TODO: Implemnt search function
+        }
+        else
+            binding.ivSearch.invisible()
+
+
+
+
     }
 
 

@@ -79,12 +79,12 @@
                 android:layout_height="match_parent"
                 android:paddingStart="15dp"
                 android:src="@drawable/baseline_arrow_back_ios_white_24"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/title_bar"
                 style="@style/actionbar_title"
-                android:text="@string/main_menu"
+                android:text="@string/btitle_main_menu"
                 app:autoSizeMaxTextSize="40sp"
                 app:autoSizeMinTextSize="25sp"
                 app:autoSizeTextType="uniform"

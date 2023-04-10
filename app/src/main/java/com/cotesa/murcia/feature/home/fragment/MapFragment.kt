@@ -8,11 +8,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.cotesa.appcore.extension.*
 import com.cotesa.appcore.platform.BaseFragment
+import com.cotesa.common.R
+import com.cotesa.common.util.DefaultActionBar
+import com.cotesa.common.util.HomeActionBar
 import com.cotesa.murcia.BeachApplication
 import com.cotesa.murcia.databinding.FragmentMapBinding
 import com.cotesa.murcia.di.ApplicationComponent
+import com.cotesa.murcia.feature.home.activity.HomeActivity
 import com.cotesa.murcia.feature.home.viewmodel.HomeViewModel
 import com.cotesa.murcia.navigator.Navigator
 import javax.inject.Inject
@@ -65,7 +70,14 @@ class MapFragment : BaseFragment() {
 
 
     private fun initializeView() {
+        with (activity as HomeActivity){
+            configureActionBar(DefaultActionBar(getString(R.string.btitle_map)))
+        }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        Toast.makeText(requireContext(),"xd", Toast.LENGTH_LONG).show()
     }
 
     fun goToUrl(url: String) {
