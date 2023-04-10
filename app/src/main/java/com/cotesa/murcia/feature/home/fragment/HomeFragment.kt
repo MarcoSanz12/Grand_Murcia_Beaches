@@ -50,8 +50,6 @@ class HomeFragment : BaseFragment() {
 
     }
 
-
-
 /*    private fun handleLoaded(List<Beach>?) {
 
         }

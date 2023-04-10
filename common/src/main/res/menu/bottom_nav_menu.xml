@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mi_list"
+        android:title="List"
+        android:icon="@drawable/icon_list"
+        android:text="@string/tab_list" />
+
+    <item
+        android:id="@+id/mi_home"
+        android:title="Home"
+        android:icon="@drawable/icon_home"
+        android:text="@string/tab_home" />
+
+    <item
+        android:id="@+id/mi_map"
+        android:title="Map"
+        android:icon="@drawable/icon_map"
+        android:text="@string/tab_map" />
+
+</menu>

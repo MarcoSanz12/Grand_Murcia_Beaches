@@ -7,6 +7,10 @@
     <string name="fb_login_protocol_scheme" translatable="false">fb263675861754986</string>
     <string name="language">es</string>
 
+    <string name="tab_list" translatable="false">List</string>
+    <string name="tab_home" translatable="false">Home</string>
+    <string name="tab_map" translatable="false">Map</string>
+
 
     <string name="bm_home">Inicio</string>
     <string name="bm_buscar">Buscar</string>
