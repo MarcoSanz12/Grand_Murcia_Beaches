@@ -13,7 +13,7 @@ import javax.inject.Singleton
 class GetBeachesDB
 @Inject constructor(private val repository: BeachRepository.Network) : UseCase<List<Beach>, GetBeachesDB.Params>() {
 
-    data class Params(var context: Context)
+    data class Params(var context: Context?)
 
     override suspend fun run(params: Params): Either<Failure, List<Beach>> {
         return repository.callAllBeachesDB()

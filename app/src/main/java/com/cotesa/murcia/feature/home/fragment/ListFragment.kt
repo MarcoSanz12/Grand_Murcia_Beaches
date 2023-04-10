@@ -63,7 +63,7 @@ class ListFragment : BaseFragment() {
     private fun handleLoaded(beachList: List<Beach>?) {
         binding.pbListLoading.visible()
         // Order list by Alphabetical
-        val sortedList = beachList?.sortedBy { it.title.toString() }
+        val sortedList = SettingsUtils.orderBeachListByFavorites(requireContext(),beachList as List<Beach>)
 
         binding.rvListRecycle.apply {
             val decoration =
@@ -75,10 +75,10 @@ class ListFragment : BaseFragment() {
                     }
 
                     override fun onItemLongClick(v: View?, model: Beach, position:Int) {
-
                         val prefs = requireContext().getSharedPreferences(Constant.USER_SETTINGS, 0)
 
-                        val favBeachesSet = prefs.getStringSet(Constant.USER_SETTINGS_FAV_BEACHES, null)?: mutableSetOf()
+                        val preferencesSet = prefs.getStringSet(Constant.USER_SETTINGS_FAV_BEACHES, null) ?: mutableSetOf()
+                        val favBeachesSet = mutableSetOf<String>().apply { addAll(preferencesSet) }
 
                         // Checks SharedPreferences and adds/removes id from favorites
                         favBeachesSet.apply {
@@ -88,7 +88,7 @@ class ListFragment : BaseFragment() {
                                 Toast.makeText(requireContext(), "${model.title.toString()} removed from favorites",  Toast.LENGTH_SHORT).show()
                             } else {
                                 this.add(id)
-                                Toast.makeText(requireContext(),"${model.title.toString()} added to favorites",Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(),"${model.title.toString()} added to favorites", Toast.LENGTH_SHORT).show()
                             }
                         }
                         prefs.edit().putStringSet(Constant.USER_SETTINGS_FAV_BEACHES,favBeachesSet).apply()

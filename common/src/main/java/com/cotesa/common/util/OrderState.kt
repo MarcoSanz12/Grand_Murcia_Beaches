@@ -4,6 +4,5 @@ import android.location.Location
 
 enum class OrderState {
     DISTANCE,
-    ALPHABETICAL,
-    VALORATE
+    ALPHABETICAL
 }

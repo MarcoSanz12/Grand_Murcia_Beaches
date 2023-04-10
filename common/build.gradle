@@ -88,6 +88,7 @@ dependencies {
     api project(path: ':appCore')
 
     api fileTree(dir: "libs", include: ["*.jar"])
+    testImplementation 'junit:junit:4.12'
 
 
     kapt 'androidx.lifecycle:lifecycle-compiler:2.4.1'

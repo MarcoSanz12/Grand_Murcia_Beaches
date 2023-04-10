@@ -1,5 +1,6 @@
 package com.cotesa.murcia.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnLongClickListener
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cotesa.common.entity.beach.Beach
+import com.cotesa.common.util.Constant
 import com.cotesa.common.util.NotificationUtils
 import com.cotesa.common.util.SettingsUtils
 import com.cotesa.murcia.R
@@ -45,11 +47,19 @@ class CustomBeachListAdapter(private val beachList: List<Beach>, private val lis
 
             Glide.with(context).load(url).into(binding.ivItemImage)
 
+            val prefs = context.getSharedPreferences(Constant.USER_SETTINGS, 0)
+
+            val favBeachesSet = prefs.getStringSet(Constant.USER_SETTINGS_FAV_BEACHES, null) ?: mutableSetOf()
+
+            Log.d("Favorites",favBeachesSet.toString())
+
             if (SettingsUtils.isInFavorites(context,beachModel)){
+
                 binding.clItemLayout.background = context.getDrawable(R.color.favorite_color_transparent)
             }
             // XD
             else{
+
                 binding.clItemLayout.background = context.getDrawable(R.color.transparent)
             }
 
