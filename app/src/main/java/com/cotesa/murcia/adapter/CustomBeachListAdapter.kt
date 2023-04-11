@@ -7,6 +7,8 @@ import android.view.View.OnLongClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cotesa.appcore.extension.loadFromUrl
+import com.cotesa.appcore.extension.notNull
 import com.cotesa.common.entity.beach.Beach
 import com.cotesa.common.util.Constant
 import com.cotesa.common.util.NotificationUtils
@@ -42,10 +44,11 @@ class CustomBeachListAdapter(private val beachList: List<Beach>, private val lis
 
             binding.tvItemName.text = beachModel.title
 
-            var url = beachModel.mainImage?.get(0)?.url
+            // Load image if url not null
+            beachModel.mainImage?.get(0)?.url?.notNull {
+                binding.ivItemImage.loadFromUrl(it)
+            }
             val context = binding.ivItemImage.context
-
-            Glide.with(context).load(url).into(binding.ivItemImage)
 
             val prefs = context.getSharedPreferences(Constant.USER_SETTINGS, 0)
 

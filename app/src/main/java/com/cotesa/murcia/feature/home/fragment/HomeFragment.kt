@@ -53,7 +53,8 @@ class HomeFragment : BaseFragment() {
 
     }
 
-/*    private fun handleLoaded(List<Beach>?) {
+    /*
+    private fun handleLoaded(List<Beach>?) {
 
         }
     }*/

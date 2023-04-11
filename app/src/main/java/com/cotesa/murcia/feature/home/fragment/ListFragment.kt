@@ -69,35 +69,63 @@ class ListFragment : BaseFragment() {
             val decoration =
                 DividerItemDecoration(context, LinearLayoutManager(context).orientation)
             addItemDecoration(decoration)
-            adapter = CustomBeachListAdapter(sortedList!!, object : RecyclerViewOnItemClickListener<Beach> {
-                    override fun onItemClick(v: View?, model: Beach) {
-
-                    }
-
-                    override fun onItemLongClick(v: View?, model: Beach, position:Int) {
-                        val prefs = requireContext().getSharedPreferences(Constant.USER_SETTINGS, 0)
-
-                        val preferencesSet = prefs.getStringSet(Constant.USER_SETTINGS_FAV_BEACHES, null) ?: mutableSetOf()
-                        val favBeachesSet = mutableSetOf<String>().apply { addAll(preferencesSet) }
-
-                        // Checks SharedPreferences and adds/removes id from favorites
-                        favBeachesSet.apply {
-                            val id = model.nid.toString()
-                            if (this.contains(id)) {
-                                this.remove(id)
-                                Toast.makeText(requireContext(), "${model.title.toString()} removed from favorites",  Toast.LENGTH_SHORT).show()
-                            } else {
-                                this.add(id)
-                                Toast.makeText(requireContext(),"${model.title.toString()} added to favorites", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                        prefs.edit().putStringSet(Constant.USER_SETTINGS_FAV_BEACHES,favBeachesSet).apply()
-
-                        binding.rvListRecycle.adapter!!.notifyItemChanged(position)
-                    }
-                })
+            adapter = CustomBeachListAdapter(sortedList!!, BeachRecyclerViewOnClickItemListener())
         }
         binding.pbListLoading.invisible()
+    }
+
+    inner class BeachRecyclerViewOnClickItemListener : RecyclerViewOnItemClickListener<Beach> {
+        override fun onItemClick(v: View?, model: Beach) {
+
+        }
+
+
+        override fun onItemLongClick(v: View?, model: Beach, position:Int) {
+            updateFavorites(model, position)
+        }
+    }
+    /**
+     * When an item in the RecyclerView gets pressed for a long time, checks in [SharedPreferences]
+     * for its nid.
+     * If it exists, gets removed from there
+     * If it doesn't, gets added
+     *
+     * After all this, gets saved and the item in question gets updated.
+     *
+     * @param model Clicked Beach item
+     * @param position of the [model] in the RecyclerView
+     */
+    private fun updateFavorites(model: Beach, position: Int) {
+        val prefs = requireContext().getSharedPreferences(Constant.USER_SETTINGS, 0)
+
+        val preferencesSet =
+            prefs.getStringSet(Constant.USER_SETTINGS_FAV_BEACHES, null) ?: mutableSetOf()
+        val favBeachesSet = mutableSetOf<String>().apply { addAll(preferencesSet) }
+
+        // Checks SharedPreferences and adds/removes id from favorites
+        favBeachesSet.apply {
+            val id = model.nid.toString()
+            if (this.contains(id)) {
+                this.remove(id)
+                Toast.makeText(
+                    requireContext(),
+                    "${model.title.toString()} removed from favorites",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                this.add(id)
+                Toast.makeText(
+                    requireContext(),
+                    "${model.title.toString()} added to favorites",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+        // Save changes
+        prefs.edit().putStringSet(Constant.USER_SETTINGS_FAV_BEACHES, favBeachesSet).apply()
+
+        // Update RecyclerView item
+        binding.rvListRecycle.adapter!!.notifyItemChanged(position)
     }
 
 
