@@ -3,13 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardContact"
     android:background="@color/white"
-    android:padding="2dp"
+    android:padding="1dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="6dp"
-    android:layout_marginEnd="6dp"
-    android:layout_marginTop="6dp">
+    android:layout_margin="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_cardCardView"
@@ -30,6 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+                    android:id="@+id/tv_cardTitle"
                     style="@style/CategoryTitle"
                     tools:text="descripción"
                     app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_fdContact2"
+                android:id="@+id/view_cardContent"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
                 tools:visibility="visible" >
 
                 <LinearLayout
-                    android:id="@+id/ll_fdPhoneNo"
+                    android:id="@+id/ll_cardPhoneNo"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
@@ -64,55 +64,63 @@
                         style="@style/ContactIcon"
                         android:src="@drawable/phone"/>
                     <TextView
-                        android:id="@+id/tv_fdPhoneNo"
+                        android:id="@+id/tv_cardPhoneNo"
                         style="@style/ContactText"
                         tools:text="+987830021"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_fdEmail"
+                    android:id="@+id/ll_cardEmail"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ll_fdPhoneNo"
+                    app:layout_constraintTop_toBottomOf="@id/ll_cardPhoneNo"
                     >
                     <ImageView
                         style="@style/ContactIcon"
                         android:src="@drawable/email"/>
                     <TextView
-                        android:id="@+id/tv_fdEmail"
+                        android:id="@+id/tv_cardEmail"
                         style="@style/ContactText"
                         tools:text="pipoxd34@gmail.com"/>
                 </LinearLayout>
+
                 <ImageView
-                    android:id="@+id/iv_fdIconWeb"
+                    android:id="@+id/iv_cardIconWeb"
                     style="@style/SocialIcon"
-                    app:layout_constraintTop_toBottomOf="@id/ll_fdEmail"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/web_icon"
+                    app:layout_constraintEnd_toStartOf="@id/iv_cardIconFacebook"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/iv_fdIconFacebook"
-                    android:src="@drawable/web_icon"/>
+                    app:layout_constraintTop_toBottomOf="@id/ll_cardEmail" />
+
                 <ImageView
-                    android:id="@+id/iv_fdIconFacebook"
+                    android:id="@+id/iv_cardIconFacebook"
                     style="@style/SocialIcon"
-                    app:layout_constraintTop_toBottomOf="@id/ll_fdEmail"
-                    app:layout_constraintStart_toEndOf="@id/iv_fdIconWeb"
-                    app:layout_constraintEnd_toStartOf="@id/iv_fdIconTwitter"
-                    android:src="@drawable/facebook_icon"/>
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/facebook_icon"
+                    app:layout_constraintEnd_toStartOf="@id/iv_cardIconTwitter"
+                    app:layout_constraintStart_toEndOf="@id/iv_cardIconWeb"
+                    app:layout_constraintTop_toBottomOf="@id/ll_cardEmail" />
+
                 <ImageView
-                    android:id="@+id/iv_fdIconTwitter"
+                    android:id="@+id/iv_cardIconTwitter"
                     style="@style/SocialIcon"
-                    app:layout_constraintTop_toBottomOf="@id/ll_fdEmail"
-                    app:layout_constraintStart_toEndOf="@id/iv_fdIconFacebook"
-                    app:layout_constraintEnd_toStartOf="@id/iv_fdIconInstagram"
-                    android:src="@drawable/twitter_icon"/>
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/twitter_icon"
+                    app:layout_constraintEnd_toStartOf="@id/iv_cardIconInstagram"
+                    app:layout_constraintStart_toEndOf="@id/iv_cardIconFacebook"
+                    app:layout_constraintTop_toBottomOf="@id/ll_cardEmail" />
+
                 <ImageView
-                    android:id="@+id/iv_fdIconInstagram"
+                    android:id="@+id/iv_cardIconInstagram"
                     style="@style/SocialIcon"
-                    app:layout_constraintTop_toBottomOf="@id/ll_fdEmail"
-                    app:layout_constraintStart_toEndOf="@id/iv_fdIconTwitter"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/instagram_icon"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:src="@drawable/instagram_icon"/>
+                    app:layout_constraintStart_toEndOf="@id/iv_cardIconTwitter"
+                    app:layout_constraintTop_toBottomOf="@id/ll_cardEmail" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

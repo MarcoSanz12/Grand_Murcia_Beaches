@@ -7,18 +7,26 @@ import android.net.Uri
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
+import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.children
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.RecyclerView
 import com.cotesa.appcore.extension.*
 import com.cotesa.appcore.platform.BaseFragment
 import com.cotesa.common.entity.beach.Beach
+import com.cotesa.common.entity.beach.Image
 import com.cotesa.common.util.*
 import com.cotesa.murcia.BeachApplication
 import com.cotesa.murcia.R
@@ -71,9 +79,10 @@ class DetailFragment : BaseFragment() {
         binding.ivDetailMainImage.loadFromUrl(beach!!.mainImage!!.first().url!!)
 
         binding.llDetailScrollView.apply {
-            generateInfoCard("description",beach!!.description!!.fromHTML().toString(),this)
-            generateInfoCard("access",beach!!.access!!.fromHTML().toString(),this)
-            generateInfoCard("accessibility",beach!!.accessibility!!.fromHTML().toString(),this )
+            generateInfoCard("description",beach.description!!.fromHTML().toString(),this)
+            generateInfoCard("access",beach.access!!.fromHTML().toString(),this)
+            generateInfoCard("accessibility",beach.accessibility!!.fromHTML().toString(),this )
+            generateGalleryCard("gallery",beach.imageGallery!!,this)
         }
 
         binding.pbDetailLoading.invisible()
@@ -89,29 +98,57 @@ class DetailFragment : BaseFragment() {
      */
     private fun generateInfoCard(title:String, content:String, root:LinearLayout){
        layoutInflater.inflate(R.layout.card_info,root).apply {
-            findViewById<TextView>(R.id.tv_cardTitle).apply{
-                generateId()
-                text = title
-            }
-            findViewById<TextView>(com.cotesa.murcia.R.id.tv_cardDescription).apply {
-                text = content
-            }
+            assignCardTitle(title)
 
-           expandCard(this)
+           findViewById<TextView>(R.id.view_cardContent).apply{
+               text = content
+           }
+
+           makeCardExpandable(this)
+           }
+        }
+
+    private fun View.assignCardTitle(title: String) {
+        findViewById<TextView>(R.id.tv_cardTitle).apply {
+            Log.d("Type",this::class.java.name)
+            generateId()
+            text = title
         }
     }
 
-    /**
+    private fun generateGalleryCard(title:String,content:List<Image>, root:LinearLayout){
+        val cardGallery = layoutInflater.inflate(R.layout.card_gallery,root)
+
+        cardGallery.assignCardTitle(title)
+
+        val gridLayout = cardGallery.findViewById<GridLayout>(R.id.view_cardContent)
+
+
+        // TODO: Fix ImageView spawner 
+        for (image in content) {
+
+            val imageView = ImageView(requireContext(),null,0,R.style.gallery_photo)
+            gridLayout.addView(imageView)
+            Log.d("CardGallery","Hijos: ${gridLayout.childCount}\n${gridLayout.children.toList()}")
+
+        }
+            Log.d("Final CardGallery", "Hijos: ${cardGallery.findViewById<GridLayout>(R.id.view_cardContent).childCount}")
+
+
+            makeCardExpandable(cardGallery)
+
+    }
+    /*
      * Adds hide / show functionality for the info cards
      *
      * @param view [View] info card
      */
-    private fun expandCard (view:View){
+    private fun makeCardExpandable (view:View){
         view.apply {
             val card = findViewById<CardView>(R.id.cv_cardCardView).apply { generateId() }
             val symbol = findViewById<ImageView>(R.id.iv_cardExpandIcon).apply { generateId() }
-            val content = findViewById<TextView>(R.id.tv_cardDescription).apply { generateId() }
             val layout = findViewById<ConstraintLayout>(R.id.cl_cardConsLay).apply { generateId() }
+            var content = findViewById<View>(R.id.view_cardContent).apply { generateId() }
 
             if (content.isVisible)
                 symbol.setImageResource(R.drawable.expand_less)
@@ -162,5 +199,6 @@ class DetailFragment : BaseFragment() {
             }
         }
     }
+
 
 

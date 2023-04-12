@@ -88,4 +88,13 @@
         <item name="android:src">@drawable/expand_more</item>
     </style>
 
+    <style name="gallery_photo">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:background">@color/black</item>
+    </style>
+
 </resources>
