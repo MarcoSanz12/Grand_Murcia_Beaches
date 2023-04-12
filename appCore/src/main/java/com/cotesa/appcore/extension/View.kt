@@ -27,6 +27,10 @@ fun View.invisible() {
     this.visibility = View.GONE
 }
 
+fun View.generateId(){
+    this.id = View.generateViewId()
+}
+
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
     LayoutInflater.from(context).inflate(layoutRes, this, false)
 

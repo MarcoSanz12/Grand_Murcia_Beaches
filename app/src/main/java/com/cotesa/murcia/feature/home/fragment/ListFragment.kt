@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cotesa.appcore.extension.*
+import com.cotesa.appcore.platform.BaseActivity
 import com.cotesa.appcore.platform.BaseFragment
 import com.cotesa.common.entity.beach.Beach
 import com.cotesa.common.util.*
@@ -32,6 +33,8 @@ class ListFragment : BaseFragment() {
 
     @Inject
     lateinit var navigator: Navigator
+
+    override var level: Int = 1
 
     private val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity?.application as BeachApplication).appComponent
@@ -76,9 +79,9 @@ class ListFragment : BaseFragment() {
 
     inner class BeachRecyclerViewOnClickItemListener : RecyclerViewOnItemClickListener<Beach> {
         override fun onItemClick(v: View?, model: Beach) {
-
+            homeViewModel.selectBeach(model)
+            navigator.initDetail(requireActivity() as BaseActivity)
         }
-
 
         override fun onItemLongClick(v: View?, model: Beach, position:Int) {
             updateFavorites(model, position)

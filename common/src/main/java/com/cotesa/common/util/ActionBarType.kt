@@ -20,7 +20,7 @@ class HomeActionBar(title: String) :
 class ListActionBar(title:String, orderFunction : (order:OrderState)->Unit, searchFunction: (() -> Unit)) :
         BeachActionBar (
             title = title,
-            haveBack = false,
+            haveBack = true,
             haveOrder = OrderState.ALPHABETICAL,
             orderFunction = orderFunction,
             haveFilter = false,
@@ -32,10 +32,24 @@ class ListActionBar(title:String, orderFunction : (order:OrderState)->Unit, sear
             closeFunction = null
                 )
 
+class DetailActionBar(title:String, favoriteFunction : () -> Unit) : BeachActionBar (
+    title = title,
+    haveBack = true,
+    haveOrder = null,
+    orderFunction = null,
+    haveFilter = false,
+    filterFunction = null,
+    haveSearch = false,
+    searchFunction = null,
+    haveFavorite = true,
+    favoriteFunction = favoriteFunction,
+    closeFunction = null
+        )
+
 
 class DefaultActionBar(title: String) : BeachActionBar(
     title = title,
-    haveBack = false,
+    haveBack = true,
     haveOrder = null,
     orderFunction = null,
     haveFilter = false,

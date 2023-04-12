@@ -22,6 +22,8 @@ abstract class BaseFragment : androidx.fragment.app.Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    abstract var level : Int
+
 //    open fun onBackPress(): Boolean {
 //        return false
 //    }

@@ -27,6 +27,8 @@ class MapFragment : BaseFragment() {
     @Inject
     lateinit var navigator: Navigator
 
+    override var level: Int = 1
+
     private val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity?.application as BeachApplication).appComponent
     }

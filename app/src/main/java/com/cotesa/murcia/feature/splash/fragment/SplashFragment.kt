@@ -25,6 +25,8 @@ class SplashFragment : BaseFragment() {
     private var login = true
     private var services = false
 
+    override var level: Int = 0
+
     @Inject
     lateinit var navigator: Navigator
     private lateinit var splashViewModel: SplashViewModel

@@ -26,6 +26,8 @@ class HomeFragment : BaseFragment() {
     @Inject
     lateinit var navigator: Navigator
 
+    override var level: Int = 0
+
     private val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity?.application as BeachApplication).appComponent
     }

@@ -6,6 +6,7 @@ import com.cotesa.appcore.extension.start
 import com.cotesa.appcore.navigator.BaseNavigator
 import com.cotesa.appcore.platform.BaseActivity
 import com.cotesa.murcia.feature.home.activity.HomeActivity
+import com.cotesa.murcia.feature.home.fragment.DetailFragment
 import com.cotesa.murcia.feature.home.fragment.HomeFragment
 import com.cotesa.murcia.feature.home.fragment.ListFragment
 import com.cotesa.murcia.feature.home.fragment.MapFragment
@@ -30,6 +31,10 @@ class Navigator
 
     fun initMap(activity: BaseActivity){
         activity.changeFragment(MapFragment())
+    }
+
+    fun initDetail(activity: BaseActivity){
+        activity.changeFragment(DetailFragment())
     }
     fun initHome(activity: BaseActivity){
        showHome(activity)
