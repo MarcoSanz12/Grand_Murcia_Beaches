@@ -12,11 +12,7 @@ import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +21,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.cotesa.appcore.extension.*
 import com.cotesa.appcore.platform.BaseFragment
+import com.cotesa.common.adapter.ImageGalleryAdapter
 import com.cotesa.common.entity.beach.Beach
 import com.cotesa.common.entity.beach.Image
 import com.cotesa.common.util.*
@@ -70,6 +67,7 @@ class DetailFragment : BaseFragment() {
                 observe(selectedBeach,::handleLoaded)
             }
 
+
         }
 
     private fun handleLoaded(beach: Beach?) {
@@ -83,6 +81,10 @@ class DetailFragment : BaseFragment() {
             generateInfoCard("access",beach.access!!.fromHTML().toString(),this)
             generateInfoCard("accessibility",beach.accessibility!!.fromHTML().toString(),this )
             generateGalleryCard("gallery",beach.imageGallery!!,this)
+        }
+
+        binding.flDetailImageGalleryBackground.setOnClickListener {
+            it.invisible()
         }
 
         binding.pbDetailLoading.invisible()
@@ -117,26 +119,27 @@ class DetailFragment : BaseFragment() {
     }
 
     private fun generateGalleryCard(title:String,content:List<Image>, root:LinearLayout){
-        val cardGallery = layoutInflater.inflate(R.layout.card_gallery,root)
+        layoutInflater.inflate(R.layout.card_gallery,root).apply {
+            assignCardTitle(title)
 
-        cardGallery.assignCardTitle(title)
+            findViewById<RecyclerView>(R.id.view_cardContent).apply {
+                adapter = ImageGalleryAdapter(requireContext(),content,OnImageOnGalleryClickListener())
+            }
 
-        val gridLayout = cardGallery.findViewById<GridLayout>(R.id.view_cardContent)
-
-
-        // TODO: Fix ImageView spawner 
-        for (image in content) {
-
-            val imageView = ImageView(requireContext(),null,0,R.style.gallery_photo)
-            gridLayout.addView(imageView)
-            Log.d("CardGallery","Hijos: ${gridLayout.childCount}\n${gridLayout.children.toList()}")
-
+            makeCardExpandable(this)
         }
-            Log.d("Final CardGallery", "Hijos: ${cardGallery.findViewById<GridLayout>(R.id.view_cardContent).childCount}")
+    }
 
+    inner class OnImageOnGalleryClickListener():ImageGalleryAdapter.RecyclerViewOnItemClickListener<Image>{
+        override fun onItemClick(v: View?, model: Image) {
+            displayFullScreenImage(model)
+        }
 
-            makeCardExpandable(cardGallery)
+    }
 
+    fun displayFullScreenImage(image:Image){
+        binding.ivDetailGalleryImage.loadFromUrl(image.url!!)
+        binding.flDetailImageGalleryBackground.visible()
     }
     /*
      * Adds hide / show functionality for the info cards

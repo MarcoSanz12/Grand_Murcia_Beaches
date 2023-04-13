@@ -8,6 +8,7 @@
     android:background="@color/black">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
@@ -39,6 +40,42 @@
 
 
     </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/fl_detailImageGalleryBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible"
+        android:visibility="gone"
+        android:background="@color/black_transparent">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/close_icon"
+            android:layout_gravity="end"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_detailGalleryImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="8dp"
+            android:layout_gravity="center"
+            tools:src="@drawable/beach"/>
+
+    </FrameLayout>
 
     <ProgressBar
         android:id="@+id/pb_detailLoading"
