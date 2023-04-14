@@ -50,6 +50,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_cardTitle"
                 tools:text="@string/loremIpsumDescription"
+                android:visibility="gone"
                 tools:visibility="visible" >
 
                 <LinearLayout

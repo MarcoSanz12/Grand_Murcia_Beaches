@@ -48,6 +48,11 @@ class SplashActivity : BaseActivity() {
         }
     }
 
+    override fun addFragment(fragment: BaseFragment) {
+
+    }
+
+
     override fun changeFragment(fragment: BaseFragment) = supportFragmentManager.inTransaction {
         setReorderingAllowed(true)
         replace(
@@ -55,6 +60,8 @@ class SplashActivity : BaseActivity() {
             fragment
         ).addToBackStack(null)
     }
+
+
 
     override fun fragment() = SplashFragment()
     override fun navigatorSpecial(args: Bundle) {

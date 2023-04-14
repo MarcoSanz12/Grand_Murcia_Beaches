@@ -14,6 +14,8 @@ class Constant {
         const val LANGUAGE_EN: String = "en"
         const val LANGUAGE_DE: String = "de"
 
+        const val FRAGMENT_LEVEL_0 = "0"
+
         val LOCATION_ACTIVATED: String = "LOCATION_ACTIVATED"
 
     }

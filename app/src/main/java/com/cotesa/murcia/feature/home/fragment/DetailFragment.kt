@@ -81,6 +81,7 @@ class DetailFragment : BaseFragment() {
             generateInfoCard("access",beach.access!!.fromHTML().toString(),this)
             generateInfoCard("accessibility",beach.accessibility!!.fromHTML().toString(),this )
             generateGalleryCard("gallery",beach.imageGallery!!,this)
+            generateContactCard("contact",beach,this)
         }
 
         binding.flDetailImageGalleryBackground.setOnClickListener {
@@ -110,6 +111,69 @@ class DetailFragment : BaseFragment() {
            }
         }
 
+    private fun generateGalleryCard(title:String,content:List<Image>, root:LinearLayout){
+        layoutInflater.inflate(R.layout.card_gallery,root).apply {
+            assignCardTitle(title)
+
+            findViewById<RecyclerView>(R.id.view_cardContent).apply {
+                adapter = ImageGalleryAdapter(requireContext(),content,OnImageOnGalleryClickListener())
+            }
+            makeCardExpandable(this)
+        }
+    }
+
+    private fun generateContactCard(title:String,beach:Beach,root:LinearLayout){
+        layoutInflater.inflate(R.layout.card_contact,root).apply {
+            assignCardTitle(title)
+
+            findViewById<TextView>(R.id.tv_cardPhoneNo).text = beach.phone
+            dialAction(findViewById(R.id.ll_cardPhoneNo),beach.phone!!)
+
+            findViewById<TextView>(R.id.tv_cardEmail).text = beach.email
+            sendEmailAction(findViewById(R.id.ll_cardEmail),beach.email!!)
+
+            arrayOf<Pair<ImageView,String?>>(
+                Pair(findViewById(R.id.iv_cardIconWeb),beach.web),
+                Pair(findViewById(R.id.iv_cardIconFacebook),beach.facebook),
+                Pair(findViewById(R.id.iv_cardIconInstagram),beach.instagram),
+                Pair(findViewById(R.id.iv_cardIconTwitter),beach.twitter)).map {
+                    goToLinkAction(it.first,it.second!!)
+            }
+
+            makeCardExpandable(this)
+
+        }
+    }
+
+    private fun dialAction(view: View, phoneNo : String){
+        view.setOnClickListener{
+            var intent : Intent = Intent(Intent.ACTION_DIAL)
+            intent.setData(Uri.parse("tel:$phoneNo"))
+            startActivity(intent)
+        }
+    }
+
+    private fun goToLinkAction(view: View, link : String){
+        view.setOnClickListener{
+            var intent : Intent = Intent(Intent.ACTION_VIEW)
+            intent.setData(Uri.parse(link))
+            startActivity(intent)
+        }
+    }
+
+    private fun sendEmailAction(view:View, mailCC : String){
+        view.setOnClickListener{
+            var intent : Intent = Intent(Intent.ACTION_SEND)
+
+            intent.putExtra(Intent.EXTRA_EMAIL,mailCC)
+            intent.type = "message/rfc822";
+
+            startActivity(Intent.createChooser(intent,getString(R.string.chooseMail)))
+
+        }
+    }
+
+
     private fun View.assignCardTitle(title: String) {
         findViewById<TextView>(R.id.tv_cardTitle).apply {
             Log.d("Type",this::class.java.name)
@@ -118,17 +182,6 @@ class DetailFragment : BaseFragment() {
         }
     }
 
-    private fun generateGalleryCard(title:String,content:List<Image>, root:LinearLayout){
-        layoutInflater.inflate(R.layout.card_gallery,root).apply {
-            assignCardTitle(title)
-
-            findViewById<RecyclerView>(R.id.view_cardContent).apply {
-                adapter = ImageGalleryAdapter(requireContext(),content,OnImageOnGalleryClickListener())
-            }
-
-            makeCardExpandable(this)
-        }
-    }
 
     inner class OnImageOnGalleryClickListener():ImageGalleryAdapter.RecyclerViewOnItemClickListener<Image>{
         override fun onItemClick(v: View?, model: Image) {

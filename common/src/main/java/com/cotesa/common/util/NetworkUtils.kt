@@ -9,6 +9,8 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class NetworkUtils {
+
+
     companion object Factory {
         val okHttpClientBuilder: OkHttpClient by lazy {
             val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()

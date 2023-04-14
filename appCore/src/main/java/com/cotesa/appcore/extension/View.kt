@@ -112,6 +112,8 @@ fun ImageView.loadFromUrlWithError(url: String, idDrawable: Int) {
 }
 
 
+
+
 val Int.dp: Int
     get() = (this * Resources.getSystem().displayMetrics.density + 0.5f).toInt()
 

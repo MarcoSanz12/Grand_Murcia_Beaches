@@ -65,6 +65,7 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.e("Home","Estoy iniciandome " + this::class.java.name)
         initializeView()
+
     }
 
 

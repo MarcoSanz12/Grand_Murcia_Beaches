@@ -74,6 +74,9 @@ setContentView(view)
 
     abstract fun addFragment(savedInstanceState: Bundle?)
     abstract fun changeFragment(fragment: BaseFragment): Int
+
+    abstract fun addFragment(fragment: BaseFragment)
+
 //     supportFragmentManager.inTransaction {
 //        setReorderingAllowed(true)
 //        replace(
@@ -110,10 +113,10 @@ setContentView(view)
         }
     }
 
-    fun clearBackstack() {
-        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-    }
+    fun clearBackstack(){
+        supportFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
+    }
     abstract fun navigatorSpecial(args: Bundle)
     abstract fun toggleSpecialView()
     abstract fun subscribeToppic(toppic: String, subscribe: Boolean)

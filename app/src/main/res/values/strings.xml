@@ -6,6 +6,7 @@
         Integer congue nibh vitae odio pulvinar porttitor.
         Integer viverra diam ipsum, vel vehicula ex suscipit ac.
         Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</string>
+    <string name="chooseMail" translatable="false">Choose app to use:</string>
 
 
 </resources>
