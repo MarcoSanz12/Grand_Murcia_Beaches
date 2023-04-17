@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "beach_table")
-class Beach : java.io.Serializable{
+class Beach : java.io.Serializable, Comparable<Beach> {
     @PrimaryKey
     @ColumnInfo(name = "id")
     @SerializedName("nid")
@@ -121,4 +121,7 @@ class Beach : java.io.Serializable{
     @SerializedName("web")
     @Expose
     var web: String? = null
+    override fun compareTo(other: Beach): Int {
+       return compareValuesBy(this,other){it.title!!.lowercase()}
+    }
 }

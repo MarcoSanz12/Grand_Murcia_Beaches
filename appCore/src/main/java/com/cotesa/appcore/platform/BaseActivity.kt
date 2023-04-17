@@ -121,4 +121,5 @@ setContentView(view)
     abstract fun toggleSpecialView()
     abstract fun subscribeToppic(toppic: String, subscribe: Boolean)
 
+
 }

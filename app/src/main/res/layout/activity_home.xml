@@ -100,14 +100,19 @@
 
                 <ImageView
                     android:id="@+id/iv_search"
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:scaleType="fitCenter"
                     android:src="@drawable/baseline_search_white_24"
-                    android:visibility="gone"
-                    app:tint="@color/white" />
+                    tools:visibility="visible"
+                    android:scaleType="center"
+                    app:tint="@color/white"
+                    style="@style/small_right_icon" />
+                <ImageView
+                    android:id="@+id/iv_favorite"
+                    android:layout_width="50dp"
+                    android:src="@drawable/icon_star"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    style="@style/small_right_icon"
+                    tools:visibility="visible"/>
             </LinearLayout>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

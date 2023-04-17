@@ -1,8 +1,10 @@
 package com.cotesa.murcia.feature.home.fragment
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -10,12 +12,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cotesa.appcore.extension.*
 import com.cotesa.appcore.platform.BaseActivity
 import com.cotesa.appcore.platform.BaseFragment
 import com.cotesa.common.entity.beach.Beach
+import com.cotesa.common.entity.common.BeachActionBar
 import com.cotesa.common.util.*
 import com.cotesa.murcia.BeachApplication
 import com.cotesa.murcia.R
@@ -50,8 +54,10 @@ class ListFragment : BaseFragment() {
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentListBinding.inflate(inflater, container, false)
+
         return binding.root
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,20 +67,23 @@ class ListFragment : BaseFragment() {
             observe(beachList, ::handleLoaded)
         }
 
+
     }
+
 
     private fun handleLoaded(beachList: List<Beach>?) {
         binding.pbListLoading.visible()
-        // Order list by Alphabetical
-        val sortedList = SettingsUtils.orderBeachListByFavorites(requireContext(),beachList as List<Beach>)
+
 
         binding.rvListRecycle.apply {
-            val decoration =
-                DividerItemDecoration(context, LinearLayoutManager(context).orientation)
-            addItemDecoration(decoration)
-            adapter = CustomBeachListAdapter(sortedList!!, BeachRecyclerViewOnClickItemListener())
+            adapter = CustomBeachListAdapter(beachList!!, BeachRecyclerViewOnClickItemListener())
+            sortListWith(BeachComparator(context))
         }
         binding.pbListLoading.invisible()
+    }
+
+    private fun sortListWith(comparator: Comparator<Beach>){
+        (binding.rvListRecycle.adapter as CustomBeachListAdapter).sortItems(comparator)
     }
 
     inner class BeachRecyclerViewOnClickItemListener : RecyclerViewOnItemClickListener<Beach> {
@@ -99,47 +108,52 @@ class ListFragment : BaseFragment() {
      * @param position of the [model] in the RecyclerView
      */
     private fun updateFavorites(model: Beach, position: Int) {
-        val prefs = requireContext().getSharedPreferences(Constant.USER_SETTINGS, 0)
-
-        val preferencesSet =
-            prefs.getStringSet(Constant.USER_SETTINGS_FAV_BEACHES, null) ?: mutableSetOf()
-        val favBeachesSet = mutableSetOf<String>().apply { addAll(preferencesSet) }
-
-        // Checks SharedPreferences and adds/removes id from favorites
-        favBeachesSet.apply {
-            val id = model.nid.toString()
-            if (this.contains(id)) {
-                this.remove(id)
-                Toast.makeText(
-                    requireContext(),
-                    "${model.title.toString()} removed from favorites",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                this.add(id)
-                Toast.makeText(
-                    requireContext(),
-                    "${model.title.toString()} added to favorites",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-        // Save changes
-        prefs.edit().putStringSet(Constant.USER_SETTINGS_FAV_BEACHES, favBeachesSet).apply()
-
+        saveFavorites(model,requireContext())
         // Update RecyclerView item
         binding.rvListRecycle.adapter!!.notifyItemChanged(position)
     }
+    companion object{
+        fun saveFavorites(model: Beach,context: Context) {
+            val prefs = context.getSharedPreferences(Constant.USER_SETTINGS, 0)
+
+            val preferencesSet =
+                prefs.getStringSet(Constant.USER_SETTINGS_FAV_BEACHES, null) ?: mutableSetOf()
+            val favBeachesSet = mutableSetOf<String>().apply { addAll(preferencesSet) }
+
+            // Checks SharedPreferences and adds/removes id from favorites
+            favBeachesSet.apply {
+                val id = model.nid.toString()
+                if (this.contains(id)) {
+                    this.remove(id)
+                    Toast.makeText(
+                        context,
+                        "${model.title.toString()} removed from favorites",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    this.add(id)
+                    Toast.makeText(
+                        context,
+                        "${model.title.toString()} added to favorites",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            // Save changes
+            prefs.edit().putStringSet(Constant.USER_SETTINGS_FAV_BEACHES, favBeachesSet).apply()
+        }
+    }
+
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e("ListFragment", "Estoy iniciandome " + this::class.java.name)
         initializeView()
     }
 
 
-    private fun initializeView() {
+    override fun initializeView() {
         with(activity as HomeActivity) {
             configureActionBar(
                 ListActionBar(
@@ -157,7 +171,7 @@ class ListFragment : BaseFragment() {
 
     private fun orderFunction(orderState: OrderState) {
         if (orderState == OrderState.ALPHABETICAL) {
-
+            sortListWith(BeachComparator(requireContext()))
         }
     }
 
@@ -170,4 +184,5 @@ class ListFragment : BaseFragment() {
             e.printStackTrace()
         }
     }
+
 }

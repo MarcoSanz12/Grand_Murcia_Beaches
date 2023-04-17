@@ -15,6 +15,7 @@ import com.cotesa.common.util.NotificationUtils
 import com.cotesa.common.util.SettingsUtils
 import com.cotesa.murcia.R
 import com.cotesa.murcia.databinding.ItemBeachBinding
+import java.util.Collections
 
 
 class CustomBeachListAdapter(private val beachList: List<Beach>, private val listener: RecyclerViewOnItemClickListener<Beach>) :
@@ -33,6 +34,11 @@ class CustomBeachListAdapter(private val beachList: List<Beach>, private val lis
 
     override fun getItemCount(): Int {
         return beachList.size
+    }
+
+    fun sortItems (comparator:Comparator<Beach>){
+        Collections.sort(beachList,comparator)
+        notifyDataSetChanged()
     }
 
 

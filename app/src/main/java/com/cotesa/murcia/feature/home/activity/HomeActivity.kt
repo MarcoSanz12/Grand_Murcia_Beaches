@@ -1,5 +1,6 @@
 package com.cotesa.murcia.feature.home.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -22,6 +23,7 @@ import com.cotesa.murcia.di.ApplicationComponent
 import com.cotesa.murcia.feature.home.viewmodel.HomeViewModel
 import com.cotesa.murcia.navigator.Navigator
 import com.cotesa.murcia.R
+import com.cotesa.murcia.feature.home.fragment.DetailFragment
 import com.cotesa.murcia.feature.home.fragment.HomeFragment
 import com.cotesa.murcia.feature.home.fragment.ListFragment
 import com.cotesa.murcia.feature.home.fragment.MapFragment
@@ -90,7 +92,6 @@ class HomeActivity : BaseActivity() {
             onBackPressed()
         }
 
-
         binding.bnvNav.apply {
             selectedItemId = com.cotesa.common.R.id.mi_home
             setOnItemSelectedListener {
@@ -118,16 +119,29 @@ class HomeActivity : BaseActivity() {
                 }
             }
         }
+
+        supportFragmentManager.apply {
+            addOnBackStackChangedListener {
+                val last = supportFragmentManager.fragments.last()
+                if (last is BaseFragment)
+                    last.initializeView()
+            }
+        }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onBackPressed() {
-        when (supportFragmentManager.fragments.last()) {
-            is ListFragment, is MapFragment -> {
-                binding.bnvNav.selectedItemId = com.cotesa.common.R.id.mi_home
-            }
-            else -> {
+        val lastFragment = supportFragmentManager.fragments.last()
+        when (lastFragment) {
+            is DetailFragment -> {
                 super.onBackPressed()
             }
+
+            is ListFragment, is MapFragment ->
+                binding.bnvNav.selectedItemId = com.cotesa.common.R.id.mi_home
+
+            else -> super.onBackPressed()
+
         }
     }
 
@@ -143,19 +157,6 @@ class HomeActivity : BaseActivity() {
             addToBackStack(fragment.level.toString())
             add(R.id.fragment_container, fragment)
         }
-
-        if (supportFragmentManager.backStackEntryCount > 0) {
-            Log.e("Stack", "${supportFragmentManager.backStackEntryCount}")
-            var infoStack = ""
-            for (entry in 1..supportFragmentManager.backStackEntryCount) {
-                infoStack += ("\n${entry}. ${
-                    supportFragmentManager.getBackStackEntryAt(entry - 1).name
-                }")
-            }
-
-            Log.e("Stack", "${infoStack}")
-        }
-
     }
 
     override fun changeFragment(fragment: BaseFragment): Int {
@@ -165,16 +166,6 @@ class HomeActivity : BaseActivity() {
                 R.id.fragment_container,
                 fragment
             )
-
-        }
-        if (supportFragmentManager.backStackEntryCount > 0) {
-            Log.e("Stack", "${supportFragmentManager.backStackEntryCount}")
-            var infoStack = ""
-            for (entry in 1..supportFragmentManager.backStackEntryCount) {
-                infoStack.plus("${entry}. ${supportFragmentManager.getBackStackEntryAt(entry-1).name}")
-            }
-
-            Log.e("Stack", "${infoStack}")
         }
         return xd
     }
@@ -183,7 +174,6 @@ class HomeActivity : BaseActivity() {
     override fun initViews() {
 
     }
-
 
     /**
      * Configures the activity ActionBar, setting the visibilities and functionalities of it
@@ -214,12 +204,6 @@ class HomeActivity : BaseActivity() {
 
 
     private var orderState: OrderState = OrderState.ALPHABETICAL
-
-
-    fun setTitle(title: String) {
-        binding.titleBar.text = title
-        binding.titleBar.visibility = View.VISIBLE
-    }
 
 
     override fun onResume() {

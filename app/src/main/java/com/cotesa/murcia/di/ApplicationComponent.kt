@@ -19,9 +19,7 @@ interface ApplicationComponent {
     fun inject(application: BeachApplication)
     fun inject(splashActivity: SplashActivity)
     fun inject(splashFragment: SplashFragment)
-
     fun inject(homeActivity: HomeActivity)
-
     fun inject(listFragment: ListFragment)
     fun inject(mapFragment: MapFragment)
     fun inject(homeFragment: HomeFragment)

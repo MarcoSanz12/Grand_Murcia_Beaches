@@ -57,6 +57,7 @@ class MapFragment : BaseFragment() {
     }
 
 
+
     private fun handleLoaded(b: Boolean?) {
         when(b){
             true,null -> binding.pbMapLoading.invisible()
@@ -71,7 +72,7 @@ class MapFragment : BaseFragment() {
     }
 
 
-    private fun initializeView() {
+    override fun initializeView() {
         with (activity as HomeActivity){
             configureActionBar(DefaultActionBar(getString(R.string.btitle_map)))
         }

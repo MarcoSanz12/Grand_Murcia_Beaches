@@ -39,7 +39,10 @@ class DetailFragment : BaseFragment() {
     @Inject
     lateinit var navigator: Navigator
 
+    var actionBarTitle : String? = null
+
     override var level: Int = 2
+
 
     private val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity?.application as BeachApplication).appComponent
@@ -73,7 +76,8 @@ class DetailFragment : BaseFragment() {
     private fun handleLoaded(beach: Beach?) {
         binding.pbDetailLoading.visible()
 
-        initializeView(beach!!.title as String)
+        actionBarTitle = beach!!.title
+        initializeView()
         binding.ivDetailMainImage.loadFromUrl(beach!!.mainImage!!.first().url!!)
 
         binding.llDetailScrollView.apply {
@@ -233,10 +237,9 @@ class DetailFragment : BaseFragment() {
             super.onViewCreated(view, savedInstanceState)
         }
 
-
-        private fun initializeView(title:String) {
-            with (activity as HomeActivity){
-                configureActionBar(DetailActionBar(title,::favoriteFunction))
+    override fun initializeView() {
+        with (activity as HomeActivity){
+                configureActionBar(DetailActionBar(actionBarTitle ?: "Beach",::favoriteFunction))
             }
         }
 

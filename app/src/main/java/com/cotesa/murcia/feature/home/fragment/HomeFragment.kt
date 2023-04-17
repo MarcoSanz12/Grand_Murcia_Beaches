@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import com.cotesa.appcore.extension.*
 import com.cotesa.appcore.platform.BaseFragment
 import com.cotesa.common.entity.beach.Beach
@@ -47,11 +48,13 @@ class HomeFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         appComponent.inject(this)
         /* (activity as BaseActivity).clearBackstack()*/
         homeViewModel = viewModel(viewModelFactory) {
 
         }
+
 
     }
 
@@ -69,7 +72,7 @@ class HomeFragment : BaseFragment() {
     }
 
 
-    private fun initializeView() {
+    override fun initializeView() {
         with (activity as HomeActivity){
             configureActionBar(HomeActionBar(getString(com.cotesa.common.R.string.btitle_main_menu)))
         }

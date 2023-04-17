@@ -59,7 +59,7 @@ class SplashFragment : BaseFragment() {
         initializeView()
     }
 
-    private fun initializeView() {
+    override fun initializeView() {
 
         CoroutineScope(Dispatchers.Default).launch{
             splashViewModel.callAllBeaches()

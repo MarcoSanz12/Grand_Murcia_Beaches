@@ -11,7 +11,6 @@ fun SharedPreferences.putAny(name: String, any: Any) {
         is Float -> edit().putFloat(name, any).apply()
     }
 }
-
 fun SharedPreferences.remove(name:String){
     edit().remove(name).apply()
 }

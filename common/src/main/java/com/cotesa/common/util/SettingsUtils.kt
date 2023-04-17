@@ -17,22 +17,5 @@ class SettingsUtils {
             return favBeachesSet.contains(beach.nid.toString())
         }
 
-        fun orderBeachListByFavorites(context: Context, beachList: List<Beach>): List<Beach> {
-            val favorites = mutableListOf<Beach>()
-            val nonFavorites = mutableListOf<Beach>()
-
-            for (b in beachList) {
-                if (isInFavorites(context, b))
-                    favorites.add(b)
-                else
-                    nonFavorites.add(b)
-            }
-            return mutableListOf<Beach>().apply {
-                addAll(favorites.sortedBy { it.title })
-                addAll(nonFavorites.sortedBy { it.title })
-            }.toList()
-
-
-        }
     }
 }

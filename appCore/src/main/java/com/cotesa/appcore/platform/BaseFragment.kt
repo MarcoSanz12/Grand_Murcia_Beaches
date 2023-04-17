@@ -39,6 +39,8 @@ abstract class BaseFragment : androidx.fragment.app.Fragment() {
         requireActivity().onBackPressed()
     }
 
+    abstract fun initializeView()
+
     fun firstTimeCreated(savedInstanceState: Bundle?) = savedInstanceState == null
 
     fun notify(viewContainer: View, @StringRes message: Int) =
