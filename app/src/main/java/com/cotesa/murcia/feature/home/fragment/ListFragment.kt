@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -84,10 +85,22 @@ class ListFragment : BaseFragment() {
     }
 
     inner class BeachRecyclerViewOnClickItemListener : RecyclerViewOnItemClickListener<Beach> {
+
+        private var lastTimeClicked = 777L
         override fun onItemClick(v: View?, model: Beach) {
-            homeViewModel.selectBeach(model)
-            navigator.initDetail(requireActivity() as BaseActivity)
-            refreshRecycler()
+            val now = System.currentTimeMillis()
+
+            if (now-lastTimeClicked > Constant.BEACH_SELECT_COOLDOWN){
+                Log.d("Cooldown","ENABLED [${now-lastTimeClicked} ms]")
+                lastTimeClicked = now
+                homeViewModel.selectBeach(model)
+                navigator.initDetail(requireActivity() as BaseActivity)
+                refreshRecycler()
+            }
+            else{
+                Log.d("Cooldown","DISABLED [${now-lastTimeClicked} ms]")
+            }
+
         }
 
         override fun onItemLongClick(v: View?, model: Beach, position:Int) {

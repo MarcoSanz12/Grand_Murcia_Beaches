@@ -92,7 +92,6 @@ class CustomBeachListAdapter(private var beachList: List<Beach>, private val lis
 
         override fun onClick(p0: View?) {
             listener.onItemClick(p0,beachList[bindingAdapterPosition])
-
         }
 
 

@@ -7,6 +7,7 @@ class Constant {
         const val LANG: String = "LANG"
         const val SYNC: String = "SYNC"
         const val USER_SETTINGS: String = "USER_SETTINGS"
+        const val BEACH_SELECT_COOLDOWN: Long = 1000L
         const val USER_SETTINGS_FAV_BEACHES: String = "USER_SETTINGS_FAV_BEACHES"
         val SETTINGS_NOTIFICACIONES: String = "SETTINGS_NOTIFICACIONES"
 
