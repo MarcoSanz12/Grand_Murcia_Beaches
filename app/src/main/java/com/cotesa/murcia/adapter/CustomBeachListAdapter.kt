@@ -1,5 +1,6 @@
 package com.cotesa.murcia.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,8 +19,10 @@ import com.cotesa.murcia.databinding.ItemBeachBinding
 import java.util.Collections
 
 
-class CustomBeachListAdapter(private val beachList: List<Beach>, private val listener: RecyclerViewOnItemClickListener<Beach>) :
+class CustomBeachListAdapter(private var beachList: List<Beach>, private val listener: RecyclerViewOnItemClickListener<Beach>) :
     RecyclerView.Adapter<CustomBeachListAdapter.BeachViewHolder>() {
+
+    private val originalList = beachList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BeachViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -36,16 +39,28 @@ class CustomBeachListAdapter(private val beachList: List<Beach>, private val lis
         return beachList.size
     }
 
+    fun filterItems(text:String){
+        beachList =
+            if (text.isNotEmpty())
+                originalList.filter {
+                    it.title!!.contains(text,true) }
+            else
+                originalList
+
+        notifyDataSetChanged()
+
+    }
+
     fun sortItems (comparator:Comparator<Beach>){
         Collections.sort(beachList,comparator)
         notifyDataSetChanged()
     }
 
-
     inner class BeachViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener, View.OnLongClickListener {
 
         var binding = ItemBeachBinding.bind(view)
 
+        @SuppressLint("UseCompatLoadingForDrawables")
         fun render(beachModel : Beach){
 
             binding.tvItemName.text = beachModel.title

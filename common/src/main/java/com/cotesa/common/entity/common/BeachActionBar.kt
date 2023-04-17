@@ -11,7 +11,7 @@ open class BeachActionBar(
     var haveFilter: Boolean,
     var filterFunction: (() -> Unit)?,
     var haveSearch: Boolean,
-    var searchFunction: (() -> Unit)?,
+    var searchFunction: ((text: String) -> Unit)?,
     var closeFunction: (() -> Unit)?,
     var haveFavorite: Boolean,
     var favoriteFunction: (() -> Unit)?

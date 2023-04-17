@@ -17,7 +17,7 @@ class HomeActionBar(title: String) :
         closeFunction = null
     )
 
-class ListActionBar(title:String, orderFunction : (order:OrderState)->Unit, searchFunction: (() -> Unit)) :
+class ListActionBar(title:String, orderFunction: (order:OrderState)->Unit, searchFunction: (text:String)->Unit) :
         BeachActionBar (
             title = title,
             haveBack = true,

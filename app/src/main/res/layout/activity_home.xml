@@ -92,29 +92,81 @@
 
             <LinearLayout
                 android:id="@+id/ly_buttons"
+                android:animateLayoutChanges="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <ImageView
+                <ToggleButton
                     android:id="@+id/iv_search"
-                    android:src="@drawable/baseline_search_white_24"
+                    android:background="@drawable/baseline_search_white_24"
+                    android:textOn=" "
+                    android:textOff=" "
+                    android:checked="false"
+                    android:backgroundTint="@drawable/search_button_color"
                     tools:visibility="visible"
-                    android:scaleType="center"
-                    app:tint="@color/white"
+                    android:scaleType="fitXY"
                     style="@style/small_right_icon" />
-                <ImageView
+                <ToggleButton
                     android:id="@+id/iv_favorite"
                     android:layout_width="50dp"
-                    android:src="@drawable/icon_star"
-                    android:padding="5dp"
+                    android:checked="false"
+                    android:textOff=" "
+                    android:textOn=" "
+                    android:background="@drawable/icon_star"
+                    android:backgroundTint="@drawable/favorite_button_color"
                     android:scaleType="centerCrop"
                     style="@style/small_right_icon"
                     tools:visibility="visible"/>
             </LinearLayout>
         </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="3dp"
+            android:animateLayoutChanges="true"
+            tools:visibility="visible"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/actionbar">
+
+            <EditText
+                android:id="@+id/et_searchBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Search beach..."
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:textSize="25sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@id/ib_searchBar_close"
+                app:layout_constraintHorizontal_weight="8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ib_searchBar_close"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/close_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@id/et_searchBar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

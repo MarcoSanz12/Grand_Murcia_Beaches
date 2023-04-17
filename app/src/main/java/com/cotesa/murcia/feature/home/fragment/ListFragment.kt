@@ -4,25 +4,18 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.cotesa.appcore.extension.*
 import com.cotesa.appcore.platform.BaseActivity
 import com.cotesa.appcore.platform.BaseFragment
 import com.cotesa.common.entity.beach.Beach
-import com.cotesa.common.entity.common.BeachActionBar
 import com.cotesa.common.util.*
 import com.cotesa.murcia.BeachApplication
-import com.cotesa.murcia.R
 import com.cotesa.murcia.adapter.CustomBeachListAdapter
 import com.cotesa.murcia.adapter.RecyclerViewOnItemClickListener
 import com.cotesa.murcia.databinding.FragmentListBinding
@@ -30,13 +23,14 @@ import com.cotesa.murcia.di.ApplicationComponent
 import com.cotesa.murcia.feature.home.activity.HomeActivity
 import com.cotesa.murcia.feature.home.viewmodel.HomeViewModel
 import com.cotesa.murcia.navigator.Navigator
-import okhttp3.internal.notify
 import javax.inject.Inject
 
 class ListFragment : BaseFragment() {
 
     @Inject
     lateinit var navigator: Navigator
+
+    lateinit var recyclerAdapter : CustomBeachListAdapter
 
     override var level: Int = 1
 
@@ -55,6 +49,8 @@ class ListFragment : BaseFragment() {
     ): View {
         _binding = FragmentListBinding.inflate(inflater, container, false)
 
+
+
         return binding.root
     }
 
@@ -66,9 +62,9 @@ class ListFragment : BaseFragment() {
         homeViewModel = viewModel(viewModelFactory) {
             observe(beachList, ::handleLoaded)
         }
-
-
     }
+
+
 
 
     private fun handleLoaded(beachList: List<Beach>?) {
@@ -77,19 +73,21 @@ class ListFragment : BaseFragment() {
 
         binding.rvListRecycle.apply {
             adapter = CustomBeachListAdapter(beachList!!, BeachRecyclerViewOnClickItemListener())
+            recyclerAdapter = adapter as CustomBeachListAdapter
             sortListWith(BeachComparator(context))
         }
         binding.pbListLoading.invisible()
     }
 
     private fun sortListWith(comparator: Comparator<Beach>){
-        (binding.rvListRecycle.adapter as CustomBeachListAdapter).sortItems(comparator)
+        recyclerAdapter.sortItems(comparator)
     }
 
     inner class BeachRecyclerViewOnClickItemListener : RecyclerViewOnItemClickListener<Beach> {
         override fun onItemClick(v: View?, model: Beach) {
             homeViewModel.selectBeach(model)
             navigator.initDetail(requireActivity() as BaseActivity)
+            refreshRecycler()
         }
 
         override fun onItemLongClick(v: View?, model: Beach, position:Int) {
@@ -111,6 +109,10 @@ class ListFragment : BaseFragment() {
         saveFavorites(model,requireContext())
         // Update RecyclerView item
         binding.rvListRecycle.adapter!!.notifyItemChanged(position)
+    }
+
+    fun refreshRecycler(){
+        recyclerAdapter.sortItems(BeachComparator(requireContext()))
     }
     companion object{
         fun saveFavorites(model: Beach,context: Context) {
@@ -142,13 +144,12 @@ class ListFragment : BaseFragment() {
             // Save changes
             prefs.edit().putStringSet(Constant.USER_SETTINGS_FAV_BEACHES, favBeachesSet).apply()
         }
+
     }
-
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initializeView()
     }
 
@@ -165,8 +166,8 @@ class ListFragment : BaseFragment() {
         }
     }
 
-    private fun searchFunction() {
-        TODO("Not yet implemented")
+    private fun searchFunction(text:String) {
+        recyclerAdapter.filterItems(text)
     }
 
     private fun orderFunction(orderState: OrderState) {

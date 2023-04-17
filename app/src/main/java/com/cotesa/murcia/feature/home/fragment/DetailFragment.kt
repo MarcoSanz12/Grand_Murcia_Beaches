@@ -244,7 +244,7 @@ class DetailFragment : BaseFragment() {
         }
 
     private fun favoriteFunction() {
-        TODO("Not yet implemented")
+        ListFragment.saveFavorites(homeViewModel.selectedBeach.value as Beach,requireContext())
     }
 
 

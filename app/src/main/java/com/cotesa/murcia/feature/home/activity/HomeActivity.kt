@@ -5,18 +5,23 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.core.view.size
 import androidx.lifecycle.ViewModelProvider
 import com.cotesa.appcore.extension.*
 import com.cotesa.appcore.platform.BaseActivity
 import com.cotesa.appcore.platform.BaseFragment
 import com.cotesa.appcore.platform.ConfigureActionBar
+import com.cotesa.common.entity.beach.Beach
 import com.cotesa.common.entity.common.BeachActionBar
 import com.cotesa.common.util.FragmentEnum
 import com.cotesa.common.util.OrderState
+import com.cotesa.common.util.SettingsUtils
 import com.cotesa.murcia.BeachApplication
 import com.cotesa.murcia.databinding.ActivityHomeBinding
 import com.cotesa.murcia.di.ApplicationComponent
@@ -99,21 +104,18 @@ class HomeActivity : BaseActivity() {
                     //List
                     com.cotesa.common.R.id.mi_list -> {
                         navigator.initList(this@HomeActivity)
-
                         true
                     }
 
                     //Map
                     com.cotesa.common.R.id.mi_map -> {
                         navigator.initMap(this@HomeActivity)
-
                         true
                     }
 
                     //Home
                     else -> {
                         navigator.initHome(this@HomeActivity)
-
                         true
                     }
                 }
@@ -137,10 +139,16 @@ class HomeActivity : BaseActivity() {
                 super.onBackPressed()
             }
 
-            is ListFragment, is MapFragment ->
+            is ListFragment ->
+                if (!resetSearch())
+                    binding.bnvNav.selectedItemId = com.cotesa.common.R.id.mi_home
+
+            is MapFragment ->
                 binding.bnvNav.selectedItemId = com.cotesa.common.R.id.mi_home
 
-            else -> super.onBackPressed()
+            else ->{
+                super.onBackPressed()
+            }
 
         }
     }
@@ -153,6 +161,7 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun addFragment(fragment: BaseFragment) {
+        resetSearch()
         supportFragmentManager.inTransaction {
             addToBackStack(fragment.level.toString())
             add(R.id.fragment_container, fragment)
@@ -161,6 +170,7 @@ class HomeActivity : BaseActivity() {
 
     override fun changeFragment(fragment: BaseFragment): Int {
         clearBackstack()
+        resetSearch()
         val xd = supportFragmentManager.inTransaction {
             replace(
                 R.id.fragment_container,
@@ -192,18 +202,95 @@ class HomeActivity : BaseActivity() {
         else
             binding.back.invisible()
 
+        if (actionBar.haveFavorite)
+            binding.ivFavorite.apply {
+                visible()
+                val beach = homeViewModel.selectedBeach.value as Beach
+                isChecked = SettingsUtils.isInFavorites(context!!,beach)
+                setOnClickListener{
+                    val listFragment = getListFragment()
+
+                    listFragment.notNull {
+                        actionBar.favoriteFunction!!.invoke()
+                        it.refreshRecycler()
+                        isChecked = SettingsUtils.isInFavorites(context!!,beach)
+                    }
+
+                }
+            }
+        else
+            binding.ivFavorite.invisible()
+
         // Search button
         if (actionBar.haveSearch) {
-            binding.ivSearch.visible()
-            //TODO: Implemnt search function
+            binding.ivSearch.apply {
+                visible()
+                val searchBar = binding.clSearchBar
+
+                setOnClickListener{
+                    if (isChecked){
+                        searchBar.visible()
+                        binding.etSearchBar.apply {
+                            requestFocus()
+                            applicationContext.showKeyboard(this)
+                        }
+                    }
+                    else{
+                        searchBar.invisible()
+                        applicationContext.hideKeyboard(binding.etSearchBar)
+                    }
+
+
+                }
+            }
+            binding.etSearchBar.addTextChangedListener(object:TextWatcher{
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    if (getListFragment() != null)
+                        actionBar.searchFunction!!.invoke(p0.toString())
+                }
+
+            })
+            binding.ibSearchBarClose.setOnClickListener{
+                binding.etSearchBar.text = Editable.Factory.getInstance().newEditable("")
+            }
+
         } else
             binding.ivSearch.invisible()
-
-
     }
 
 
-    private var orderState: OrderState = OrderState.ALPHABETICAL
+    private fun getListFragment() : ListFragment?{
+        return supportFragmentManager.fragments.filterIsInstance<ListFragment>().firstOrNull()
+    }
+
+    /**
+     * Checks search's button toggle state, if TRUE perform a click & return true else return false
+     *
+     * @return [Boolean] to check if button has been pressed
+     */
+    private fun resetSearch() : Boolean{
+        currentFocus?.let {
+            baseContext.hideKeyboard(it)
+        }
+        binding.ivSearch.apply {
+            return if (isChecked) {
+                binding.ibSearchBarClose.performClick()
+                performClick()
+            }
+            else
+                false
+        }
+    }
+
+
 
 
     override fun onResume() {

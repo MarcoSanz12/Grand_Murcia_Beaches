@@ -8,6 +8,7 @@
 
     <color name="color_red">#f02929</color>
     <color name="orange">#F09029</color>
+    <color name="yellow">#FDD835</color>
     <color name="colorTextPrimary">#0D262D</color>
     <color name="black">#000000</color>
     <color name="black_50">#CC000000</color>
